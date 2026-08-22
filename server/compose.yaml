@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: tivuq
+      POSTGRES_USER: tivuq
+      POSTGRES_PASSWORD: change-me-before-production
+    volumes:
+      - tivuq_postgres:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tivuq"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  tivuq_postgres:

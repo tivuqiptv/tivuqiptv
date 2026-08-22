@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TIVUQIPTV Yönetim</title>
+    <link rel="stylesheet" href="/admin/styles.css">
+  </head>
+  <body>
+    <main>
+      <section id="login-view" class="login-shell">
+        <div class="login-card">
+          <div class="brand-mark" aria-hidden="true">P</div>
+          <p class="eyebrow">TIVUQIPTV YÖNETİM</p>
+          <h1>Tek ekrandan lisans kontrolü</h1>
+          <p class="muted">Yalnızca yetkili yöneticiler giriş yapabilir.</p>
+          <form id="login-form">
+            <label>E-posta
+              <input id="login-email" type="email" autocomplete="username" required>
+            </label>
+            <label>Parola
+              <input id="login-password" type="password" autocomplete="current-password" minlength="12" required>
+            </label>
+            <p id="login-error" class="form-error" role="alert"></p>
+            <button class="primary-button" type="submit">Giriş yap</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="dashboard-view" class="app-shell" hidden>
+        <aside class="sidebar">
+          <div class="brand-row">
+            <div class="brand-mark small" aria-hidden="true">P</div>
+            <div><strong>TIVUQIPTV</strong><span>Yönetim Paneli</span></div>
+          </div>
+          <nav aria-label="Yönetim bölümleri">
+            <button class="nav-item active" data-view="devices">Cihazlar ve Lisanslar</button>
+            <button class="nav-item" data-view="payments">Ödemeler</button>
+            <button class="nav-item" data-view="privacy">Veri Silme Talepleri</button>
+            <button class="nav-item" data-view="audit">İşlem Geçmişi</button>
+          </nav>
+          <div class="sidebar-footer">
+            <span id="admin-email"></span>
+            <button id="logout-button" class="text-button">Çıkış yap</button>
+          </div>
+        </aside>
+
+        <div id="devices-content" class="content view-content">
+          <header>
+            <div>
+              <p class="eyebrow">GENEL DURUM</p>
+              <h2>Cihazlar ve lisanslar</h2>
+            </div>
+            <button id="refresh-button" class="secondary-button">Yenile</button>
+          </header>
+
+          <section class="metric-grid" aria-label="Lisans özeti">
+            <article><span>Toplam cihaz</span><strong id="total-devices">—</strong></article>
+            <article><span>Aktif lisans</span><strong id="active-licenses">—</strong></article>
+            <article><span>Pasif lisans</span><strong id="inactive-licenses">—</strong></article>
+            <article><span>Son 24 saat</span><strong id="recent-devices">—</strong></article>
+          </section>
+
+          <section class="table-card">
+            <div class="table-toolbar">
+              <div>
+                <h3>Kayıtlı cihazlar</h3>
+                <p class="muted">Aktivasyon ekranından sunucuya ulaşan cihazlar burada görünür.</p>
+              </div>
+              <input id="device-search" type="search" placeholder="Cihaz kodu, model veya müşteri ara…">
+            </div>
+            <div id="panel-message" class="panel-message" hidden></div>
+            <div class="table-scroll">
+              <table>
+                <thead><tr>
+                  <th>Cihaz</th><th>Müşteri</th><th>Son bağlantı</th><th>Lisans</th><th></th>
+                </tr></thead>
+                <tbody id="device-rows"></tbody>
+              </table>
+              <div id="empty-state" class="empty-state" hidden>Henüz kayıtlı cihaz yok.</div>
+            </div>
+          </section>
+        </div>
+
+        <div id="payments-content" class="content view-content" hidden>
+          <header><div><p class="eyebrow">TİCARİ HAREKETLER</p><h2>Ödemeler</h2></div></header>
+          <section class="table-card standalone-card">
+            <div class="table-toolbar"><div><h3>Ödeme kayıtları</h3><p class="muted">Doğrulanmış ödeme webhook olayları burada listelenir.</p></div></div>
+            <div class="table-scroll"><table>
+              <thead><tr><th>Tarih</th><th>Sağlayıcı</th><th>Cihaz</th><th>Müşteri</th><th>Tutar</th><th>Durum</th></tr></thead>
+              <tbody id="payment-rows"></tbody>
+            </table><div id="payments-empty" class="empty-state" hidden>Henüz ödeme kaydı yok.</div></div>
+          </section>
+        </div>
+
+        <div id="audit-content" class="content view-content" hidden>
+          <header><div><p class="eyebrow">GÜVENLİK VE KAYIT</p><h2>İşlem geçmişi</h2></div></header>
+          <section class="table-card standalone-card">
+            <div class="table-toolbar"><div><h3>Son 250 işlem</h3><p class="muted">Yönetici, cihaz ve lisans doğrulama hareketleri.</p></div></div>
+            <div class="table-scroll"><table>
+              <thead><tr><th>Tarih</th><th>İşlem</th><th>Aktör</th><th>Hedef</th><th>IP</th></tr></thead>
+              <tbody id="audit-rows"></tbody>
+            </table><div id="audit-empty" class="empty-state" hidden>Henüz işlem kaydı yok.</div></div>
+          </section>
+        </div>
+
+        <div id="privacy-content" class="content view-content" hidden>
+          <header>
+            <div><p class="eyebrow">GİZLİLİK İŞLEMLERİ</p><h2>Veri silme talepleri</h2></div>
+            <a class="secondary-button link-button" href="/privacy" target="_blank" rel="noopener">Politikayı aç</a>
+          </header>
+          <section class="table-card standalone-card">
+            <div class="table-toolbar"><div><h3>Doğrulanmış cihaz talepleri</h3><p class="muted">Tamamlama işlemi cihaz kimliğini anonimleştirir ve bu cihazdaki lisans erişimini geri döndürülemez biçimde kapatır.</p></div></div>
+            <div class="table-scroll"><table>
+              <thead><tr><th>Talep tarihi</th><th>Cihaz</th><th>Müşteri</th><th>Lisans</th><th>Durum</th><th></th></tr></thead>
+              <tbody id="privacy-rows"></tbody>
+            </table><div id="privacy-empty" class="empty-state" hidden>Henüz veri silme talebi yok.</div></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="activate-dialog">
+      <form id="activate-form" method="dialog">
+        <p class="eyebrow">ÖMÜR BOYU LİSANS</p>
+        <h3 id="activate-title">Lisans aç</h3>
+        <input id="activate-device-code" type="hidden">
+        <label>Müşteri e-postası
+          <input id="customer-email" type="email" placeholder="musteri@example.com">
+        </label>
+        <label>Müşteri adı
+          <input id="customer-name" type="text" maxlength="160" placeholder="İsteğe bağlı">
+        </label>
+        <div class="dialog-actions">
+          <button id="activate-cancel" type="button" class="secondary-button">Vazgeç</button>
+          <button type="submit" class="primary-button">Lisansı aç</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/admin/app.js"></script>
+  </body>
+</html>

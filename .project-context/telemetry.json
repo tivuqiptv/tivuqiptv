@@ -1,0 +1,16 @@
+{
+  "totalInvocations": 1,
+  "totalRepoTokensSaved": 622385,
+  "estimatedCostSavedUsd": 1.87,
+  "averageSavingsPercentage": 99.9,
+  "history": [
+    {
+      "timestamp": "2026-08-22T21:29:54.242Z",
+      "task": "Supabase entegrasyonlu kontrol merkezi ve admin paneli oluşturma - program koduna dokunmadan",
+      "repoTokensIfFullScan": 622731,
+      "contextTokensInjected": 346,
+      "tokensSaved": 622385,
+      "savingsPercentage": 99.9
+    }
+  ]
+}

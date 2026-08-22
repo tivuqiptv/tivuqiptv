@@ -1,0 +1,87 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tivuq
+      POSTGRES_USER: tivuq
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    volumes:
+      - tivuq_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tivuq -d tivuq"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks: [backend]
+
+  migrate:
+    build: .
+    restart: "no"
+    command: ["node", "scripts/migrate.js"]
+    environment:
+      DATABASE_URL: postgres://tivuq:${POSTGRES_PASSWORD}@postgres:5432/tivuq
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks: [backend]
+
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+      DATABASE_URL: postgres://tivuq:${POSTGRES_PASSWORD}@postgres:5432/tivuq
+      ADMIN_API_TOKEN: ${ADMIN_API_TOKEN:?ADMIN_API_TOKEN is required}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?ADMIN_EMAIL is required}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}
+      ADMIN_SESSION_TTL_SECONDS: ${ADMIN_SESSION_TTL_SECONDS:-43200}
+      LICENSE_SIGNING_PRIVATE_KEY_FILE: /run/secrets/license-private.pem
+      LICENSE_TOKEN_TTL_SECONDS: ${LICENSE_TOKEN_TTL_SECONDS:-604800}
+      PUBLIC_BASE_URL: https://${TIVUQ_DOMAIN:?TIVUQ_DOMAIN is required}
+      TRUST_PROXY: "true"
+      PAYMENT_WEBHOOK_SECRET: ${PAYMENT_WEBHOOK_SECRET:-}
+      REMOTE_PROFILE_ENCRYPTION_SECRET: ${REMOTE_PROFILE_ENCRYPTION_SECRET:?REMOTE_PROFILE_ENCRYPTION_SECRET is required}
+      PRIVACY_CONTROLLER_NAME: ${PRIVACY_CONTROLLER_NAME:?PRIVACY_CONTROLLER_NAME is required}
+      PRIVACY_CONTACT_EMAIL: ${PRIVACY_CONTACT_EMAIL:?PRIVACY_CONTACT_EMAIL is required}
+      PRIVACY_EFFECTIVE_DATE: ${PRIVACY_EFFECTIVE_DATE:?PRIVACY_EFFECTIVE_DATE is required}
+      AUDIT_RETENTION_DAYS: ${AUDIT_RETENTION_DAYS:-180}
+      PAIRING_METADATA_RETENTION_DAYS: ${PAIRING_METADATA_RETENTION_DAYS:-30}
+      PAYMENT_RAW_EVENT_RETENTION_DAYS: ${PAYMENT_RAW_EVENT_RETENTION_DAYS:-30}
+      PRIVACY_REQUEST_RETENTION_DAYS: ${PRIVACY_REQUEST_RETENTION_DAYS:-365}
+      DEVICE_TOMBSTONE_RETENTION_DAYS: ${DEVICE_TOMBSTONE_RETENTION_DAYS:-365}
+    volumes:
+      - ./secrets/license-private.pem:/run/secrets/license-private.pem:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    networks: [backend]
+
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    environment:
+      TIVUQ_DOMAIN: ${TIVUQ_DOMAIN:?TIVUQ_DOMAIN is required}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+    networks: [backend]
+
+networks:
+  backend:
+
+volumes:
+  tivuq_postgres:
+  caddy_data:
+  caddy_config:
