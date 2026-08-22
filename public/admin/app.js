@@ -1,0 +1,259 @@
+const $ = (selector) => document.querySelector(selector);
+const state = { devices: [], payments: [], privacyRequests: [], auditEvents: [], user: null };
+
+async function api(path, options = {}) {
+  const response = await fetch(path, {
+    credentials: 'same-origin',
+    headers: { 'content-type': 'application/json', ...(options.headers ?? {}) },
+    ...options,
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (response.status === 401) {
+    const isLoginRequest = path === '/v1/admin/session' && options.method === 'POST';
+    if (!isLoginRequest) showLogin();
+    throw new Error(payload.error ?? 'Oturum sona erdi.');
+  }
+  if (!response.ok) throw new Error(payload.error ?? `Sunucu hatası (${response.status})`);
+  return payload;
+}
+
+function showLogin() {
+  $('#dashboard-view').hidden = true;
+  $('#login-view').hidden = false;
+  $('#login-password').value = '';
+}
+
+function showDashboard(user) {
+  state.user = user;
+  $('#admin-email').textContent = user.displayName || user.email;
+  $('#login-view').hidden = true;
+  $('#dashboard-view').hidden = false;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
+  })[character]);
+}
+
+function formatDate(value) {
+  if (!value) return '—';
+  return new Intl.DateTimeFormat('tr-TR', {
+    dateStyle: 'medium', timeStyle: 'short',
+  }).format(new Date(value));
+}
+
+function formatMoney(amountMinor, currency) {
+  if (!Number.isInteger(amountMinor) || !currency) return '—';
+  return new Intl.NumberFormat('tr-TR', {
+    style: 'currency', currency: String(currency).toUpperCase(),
+  }).format(amountMinor / 100);
+}
+
+function statusInfo(device) {
+  if (device.license_status === 'active') return ['Aktif', 'active'];
+  if (device.license_status) return [device.license_status, 'inactive'];
+  return ['Lisanssız', 'none'];
+}
+
+function renderDevices() {
+  const query = $('#device-search').value.trim().toLocaleLowerCase('tr-TR');
+  const devices = state.devices.filter((device) => [
+    device.device_code, device.model, device.customer_email,
+  ].some((value) => String(value ?? '').toLocaleLowerCase('tr-TR').includes(query)));
+  $('#empty-state').hidden = devices.length !== 0;
+  $('#device-rows').innerHTML = devices.map((device) => {
+    const [label, className] = statusInfo(device);
+    const active = device.license_status === 'active';
+    return `<tr>
+      <td><span class="device-code">${escapeHtml(device.device_code)}</span>
+        <span class="subline">${escapeHtml(device.model || device.platform || 'Android TV')}</span></td>
+      <td>${escapeHtml(device.customer_email || '—')}</td>
+      <td>${escapeHtml(formatDate(device.last_seen_at))}</td>
+      <td><span class="badge ${className}">${escapeHtml(label)}</span></td>
+      <td><button class="row-action ${active ? 'danger' : ''}" data-action="${active ? 'revoke' : 'activate'}"
+        data-device="${escapeHtml(device.device_code)}" data-license="${escapeHtml(device.license_id || '')}">
+        ${active ? 'İptal et' : 'Lisans aç'}</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderPayments() {
+  $('#payments-empty').hidden = state.payments.length !== 0;
+  $('#payment-rows').innerHTML = state.payments.map((payment) => `<tr>
+    <td>${escapeHtml(formatDate(payment.created_at))}</td>
+    <td>${escapeHtml(payment.provider)}</td>
+    <td><span class="device-code">${escapeHtml(payment.device_code || '—')}</span></td>
+    <td>${escapeHtml(payment.customer_email || '—')}</td>
+    <td>${escapeHtml(formatMoney(payment.amount_minor, payment.currency))}</td>
+    <td><span class="badge ${payment.status === 'paid' ? 'active' : 'inactive'}">${escapeHtml(payment.status)}</span></td>
+  </tr>`).join('');
+}
+
+function renderAuditEvents() {
+  $('#audit-empty').hidden = state.auditEvents.length !== 0;
+  $('#audit-rows').innerHTML = state.auditEvents.map((event) => `<tr>
+    <td>${escapeHtml(formatDate(event.created_at))}</td>
+    <td>${escapeHtml(event.action)}</td>
+    <td>${escapeHtml(event.actor_id || event.actor_type)}</td>
+    <td>${escapeHtml([event.target_type, event.target_id].filter(Boolean).join(': ') || '—')}</td>
+    <td>${escapeHtml(event.ip_address || '—')}</td>
+  </tr>`).join('');
+}
+
+function renderPrivacyRequests() {
+  $('#privacy-empty').hidden = state.privacyRequests.length !== 0;
+  $('#privacy-rows').innerHTML = state.privacyRequests.map((request) => {
+    const pending = request.status === 'pending';
+    return `<tr>
+      <td>${escapeHtml(formatDate(request.requested_at))}</td>
+      <td><span class="device-code">${escapeHtml(request.device_code || 'Anonimleştirildi')}</span>
+        <span class="subline">${escapeHtml(request.model || '—')}</span></td>
+      <td>${escapeHtml(request.customer_email || '—')}</td>
+      <td>${escapeHtml(request.license_status || 'Lisans yok')}</td>
+      <td><span class="badge ${pending ? 'inactive' : 'none'}">${escapeHtml(request.status)}</span></td>
+      <td>${pending ? `<button class="row-action danger" data-privacy-complete="${escapeHtml(request.id)}" data-device="${escapeHtml(request.device_code || '')}">Silme işlemini tamamla</button>` : ''}</td>
+    </tr>`;
+  }).join('');
+}
+
+async function switchView(name) {
+  document.querySelectorAll('.view-content').forEach((element) => { element.hidden = true; });
+  document.querySelectorAll('[data-view]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.view === name);
+  });
+  $(`#${name}-content`).hidden = false;
+  try {
+    if (name === 'payments') {
+      state.payments = (await api('/v1/admin/payments')).payments;
+      renderPayments();
+    } else if (name === 'privacy') {
+      state.privacyRequests = (await api('/v1/admin/privacy/deletion-requests')).requests;
+      renderPrivacyRequests();
+    } else if (name === 'audit') {
+      state.auditEvents = (await api('/v1/admin/audit-events')).events;
+      renderAuditEvents();
+    }
+  } catch (error) { message(error.message, true); }
+}
+
+function message(text, error = false) {
+  const element = $('#panel-message');
+  element.hidden = false;
+  element.textContent = text;
+  element.style.color = error ? 'var(--red)' : '';
+  window.setTimeout(() => { element.hidden = true; }, 4500);
+}
+
+async function loadDashboard() {
+  $('#refresh-button').disabled = true;
+  try {
+    const [dashboard, devices] = await Promise.all([
+      api('/v1/admin/dashboard'), api('/v1/admin/devices'),
+    ]);
+    $('#total-devices').textContent = dashboard.summary.total_devices;
+    $('#active-licenses').textContent = dashboard.summary.active_licenses;
+    $('#inactive-licenses').textContent = dashboard.summary.inactive_licenses;
+    $('#recent-devices').textContent = dashboard.summary.devices_last_24h;
+    state.devices = devices.devices;
+    renderDevices();
+  } catch (error) {
+    message(error.message, true);
+  } finally {
+    $('#refresh-button').disabled = false;
+  }
+}
+
+$('#login-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  $('#login-error').textContent = '';
+  try {
+    const result = await api('/v1/admin/session', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: $('#login-email').value,
+        password: $('#login-password').value,
+      }),
+    });
+    showDashboard(result.user);
+    await loadDashboard();
+  } catch (error) {
+    $('#login-error').textContent = error.message === 'invalid_credentials'
+      ? 'E-posta veya parola yanlış.' : error.message;
+  }
+});
+
+$('#privacy-rows').addEventListener('click', async (event) => {
+  const button = event.target.closest('[data-privacy-complete]');
+  if (!button) return;
+  const warning = `${button.dataset.device} cihazının sunucu kimliği anonimleştirilecek ve bu cihaz lisansını kaybedecek. Bu işlem geri alınamaz. Devam edilsin mi?`;
+  if (!window.confirm(warning)) return;
+  try {
+    await api(`/v1/admin/privacy/deletion-requests/${button.dataset.privacyComplete}/complete`, {
+      method: 'POST',
+      body: JSON.stringify({ notes: 'Yönetim panelinden tamamlandı.' }),
+    });
+    message('Veri silme talebi tamamlandı.');
+    state.privacyRequests = (await api('/v1/admin/privacy/deletion-requests')).requests;
+    renderPrivacyRequests();
+    await loadDashboard();
+  } catch (error) { message(error.message, true); }
+});
+
+$('#logout-button').addEventListener('click', async () => {
+  await api('/v1/admin/session', { method: 'DELETE' }).catch(() => {});
+  showLogin();
+});
+$('#refresh-button').addEventListener('click', loadDashboard);
+$('#device-search').addEventListener('input', renderDevices);
+document.querySelectorAll('[data-view]').forEach((button) => {
+  button.addEventListener('click', () => switchView(button.dataset.view));
+});
+$('#activate-cancel').addEventListener('click', () => $('#activate-dialog').close());
+
+$('#device-rows').addEventListener('click', async (event) => {
+  const button = event.target.closest('[data-action]');
+  if (!button) return;
+  if (button.dataset.action === 'activate') {
+    $('#activate-device-code').value = button.dataset.device;
+    $('#activate-title').textContent = `${button.dataset.device} için lisans aç`;
+    $('#customer-email').value = '';
+    $('#customer-name').value = '';
+    $('#activate-dialog').showModal();
+    return;
+  }
+  if (!window.confirm(`${button.dataset.device} lisansını iptal etmek istiyor musun?`)) return;
+  try {
+    await api(`/v1/admin/licenses/${button.dataset.license}/revoke`, {
+      method: 'POST', body: JSON.stringify({ status: 'revoked', reason: 'Admin panelinden iptal edildi' }),
+    });
+    message('Lisans iptal edildi.');
+    await loadDashboard();
+  } catch (error) { message(error.message, true); }
+});
+
+$('#activate-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  try {
+    await api('/v1/admin/licenses/activate', {
+      method: 'POST',
+      body: JSON.stringify({
+        deviceCode: $('#activate-device-code').value,
+        customerEmail: $('#customer-email').value || undefined,
+        customerName: $('#customer-name').value || undefined,
+        source: 'admin_panel',
+      }),
+    });
+    $('#activate-dialog').close();
+    message('Ömür boyu lisans açıldı.');
+    await loadDashboard();
+  } catch (error) { message(error.message, true); }
+});
+
+try {
+  const session = await api('/v1/admin/session');
+  showDashboard(session.user);
+  await loadDashboard();
+} catch {
+  showLogin();
+}

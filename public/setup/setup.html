@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="pageTitle">TIVUQIPTV — Send Playlist to TV</title>
+    <link rel="stylesheet" href="/setup/styles.css">
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <div class="brand"><span>T</span><div><strong>TIVUQIPTV</strong><small data-i18n="remoteSetup">Remote Setup</small></div></div>
+        <p class="eyebrow" data-i18n="eyebrow">NO REMOTE TYPING NEEDED</p>
+        <h1 data-i18n="heading">Send your playlist to your TV</h1>
+        <p class="description" data-i18n="description">Scan the QR code on your TV. The device and temporary setup codes are filled in automatically.</p>
+        <form id="setup-form">
+          <div class="two-columns">
+            <label><span data-i18n="deviceCode">Device code</span>
+              <input id="device-code" autocomplete="off" maxlength="14" placeholder="ABCD-1234-EF56" required>
+            </label>
+            <label><span data-i18n="pairingCode">Temporary setup code</span>
+              <input id="pairing-code" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="12345678" required>
+            </label>
+          </div>
+          <label><span data-i18n="profileName">Profile name</span>
+            <input id="profile-name" maxlength="80" placeholder="Home" data-i18n-placeholder="profilePlaceholder" required>
+          </label>
+          <label><span data-i18n="playlistUrl">Personal M3U / IPTV playlist address</span>
+            <input id="playlist-url" type="url" autocomplete="off" placeholder="https://..." required>
+          </label>
+          <p class="privacy" data-i18n="privacy">Your address is encrypted during transfer and removed from the server after the TV receives it.</p>
+          <p class="privacy"><a href="/privacy" target="_blank" rel="noopener" data-i18n="privacyLink">Privacy Policy</a></p>
+          <p id="message" role="alert"></p>
+          <button type="submit" data-i18n="submit">Send to TV</button>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="/setup/app.js"></script>
+  </body>
+</html>
