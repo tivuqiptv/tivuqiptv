@@ -7,10 +7,10 @@
     { "source": "/setup", "destination": "/server/public/setup/setup.html" },
     { "source": "/setup/", "destination": "/server/public/setup/setup.html" },
     { "source": "/setup/:path*", "destination": "/server/public/setup/:path*" },
-    { "source": "/health", "destination": "/server/api/index.js" },
-    { "source": "/privacy", "destination": "/server/api/index.js" },
-    { "source": "/privacy/:path*", "destination": "/server/api/index.js" },
-    { "source": "/v1/:path*", "destination": "/server/api/index.js" },
+    { "source": "/health", "destination": "/api/index" },
+    { "source": "/privacy", "destination": "/api/index" },
+    { "source": "/privacy/:path*", "destination": "/api/index" },
+    { "source": "/v1/:path*", "destination": "/api/index" },
     { "source": "/", "destination": "/server/public/admin/index.html" }
   ],
   "headers": [
