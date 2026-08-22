@@ -35,11 +35,13 @@ function invokeHandler(request, body) {
   });
 }
 
-export default {
-  async fetch(request) {
-    const body = ['GET', 'HEAD'].includes(request.method)
-      ? null
-      : Buffer.from(await request.arrayBuffer());
-    return invokeHandler(request, body);
-  },
-};
+export default async function handler(req, res) {
+  if (res && typeof res.setHeader === 'function') {
+    return requestHandler(req, res);
+  }
+  const request = req;
+  const body = ['GET', 'HEAD'].includes(request.method)
+    ? null
+    : Buffer.from(await request.arrayBuffer());
+  return invokeHandler(request, body);
+}
