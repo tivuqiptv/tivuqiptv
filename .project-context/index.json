@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-22T23:25:49.717Z",
+  "generatedAt": "2026-08-23T01:39:30.868Z",
   "projectRoot": "/Users/umit/Desktop/yazilim/tivuqiptv/tivuqiptv program/tivuqiptv_app",
-  "scanDurationMs": 158,
+  "scanDurationMs": 165,
   "stats": {
-    "filesDiscovered": 370,
-    "filesIndexed": 310,
+    "filesDiscovered": 374,
+    "filesIndexed": 314,
     "filesIgnored": 94,
-    "totalSizeBytes": 2608760,
+    "totalSizeBytes": 2614795,
     "languageBreakdown": {
       "plaintext": 17,
       "markdown": 17,
@@ -42,8 +42,8 @@
       "cmake": 2,
       "xib": 1,
       "entitlements": 2,
-      "html": 7,
-      "css": 4,
+      "html": 9,
+      "css": 6,
       "lock": 1,
       "dockerfile": 1,
       "sql": 11,
@@ -55,9 +55,9 @@
     }
   },
   "freshness": {
-    "indexedAt": "2026-08-22T23:25:49.717Z",
-    "fileCount": 310,
-    "manifestFingerprint": "69ab5b4f5432b16cb49394c71262f4dde83c2f13ddf57c887c87c26f10c9452d"
+    "indexedAt": "2026-08-23T01:39:30.868Z",
+    "fileCount": 314,
+    "manifestFingerprint": "dd3f858e5a356425c7757b10ce419553e5b769ebcb3b827c5c8dedb2fd55129e"
   },
   "files": [
     {
@@ -65,7 +65,7 @@
       "extension": "",
       "language": "plaintext",
       "sizeBytes": 10499,
-      "modifiedAt": "2026-08-22T17:49:40.713Z",
+      "modifiedAt": "2026-08-22T23:41:25.181Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -615,8 +615,8 @@
       "relativePath": "android/app/src/main/kotlin/com/tivuq/iptv/DeviceIdentityPlugin.kt",
       "extension": ".kt",
       "language": "kotlin",
-      "sizeBytes": 7806,
-      "modifiedAt": "2026-08-14T19:40:46.000Z",
+      "sizeBytes": 7833,
+      "modifiedAt": "2026-08-23T01:16:20.087Z",
       "symbols": [
         "DeviceIdentityPlugin",
         "onMethodCall",
@@ -758,10 +758,10 @@
           "name": "decode",
           "kind": "function",
           "line": 185,
-          "signature": "private fun decode(value: String): ByteArray = Base64.decode("
+          "signature": "private fun decode(value: String): ByteArray {"
         }
       ],
-      "skeleton": "L24: class DeviceIdentityPlugin(\nL38: override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {\nL61: private fun identity(): Map<String, Any> {\nL79: private fun deviceBinding(): String {\nL89: private fun signingCertificateSha256(): String {\nL109: private fun signChallenge(nonce: String): String {\nL117: private fun verifyServerToken(token: String, publicKeyText: String): Boolean {\nL129: private fun getOrCreateKeyPair(): KeyStore.PrivateKeyEntry {\nL166: private fun isHardwareBacked(): Boolean {\nL180: private fun encode(value: ByteArray): String = Base64.encodeToString(\nL185: private fun decode(value: String): ByteArray = Base64.decode("
+      "skeleton": "L24: class DeviceIdentityPlugin(\nL38: override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {\nL61: private fun identity(): Map<String, Any> {\nL79: private fun deviceBinding(): String {\nL89: private fun signingCertificateSha256(): String {\nL109: private fun signChallenge(nonce: String): String {\nL117: private fun verifyServerToken(token: String, publicKeyText: String): Boolean {\nL129: private fun getOrCreateKeyPair(): KeyStore.PrivateKeyEntry {\nL166: private fun isHardwareBacked(): Boolean {\nL180: private fun encode(value: ByteArray): String = Base64.encodeToString(\nL185: private fun decode(value: String): ByteArray {"
     },
     {
       "relativePath": "android/app/src/main/kotlin/com/tivuq/iptv/DisplayRefreshRateManager.kt",
@@ -3990,8 +3990,8 @@
       "relativePath": "android/local.properties",
       "extension": ".properties",
       "language": "properties",
-      "sizeBytes": 169,
-      "modifiedAt": "2026-08-22T17:49:42.830Z",
+      "sizeBytes": 166,
+      "modifiedAt": "2026-08-23T00:22:10.045Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -4583,8 +4583,8 @@
       "relativePath": "ios/Flutter/Generated.xcconfig",
       "extension": ".xcconfig",
       "language": "xcconfig",
-      "sizeBytes": 678,
-      "modifiedAt": "2026-08-22T17:49:40.796Z",
+      "sizeBytes": 708,
+      "modifiedAt": "2026-08-22T23:41:25.190Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -4614,7 +4614,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 464,
-      "modifiedAt": "2026-08-22T17:49:41.429Z",
+      "modifiedAt": "2026-08-23T01:24:24.848Z",
       "symbols": [],
       "imports": [
         "PackageDescription"
@@ -4634,7 +4634,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 38,
-      "modifiedAt": "2026-08-22T17:49:41.424Z",
+      "modifiedAt": "2026-08-23T01:24:24.846Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -4652,7 +4652,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 1776,
-      "modifiedAt": "2026-08-22T17:49:41.435Z",
+      "modifiedAt": "2026-08-23T01:24:24.849Z",
       "symbols": [],
       "imports": [
         "PackageDescription"
@@ -4674,7 +4674,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 38,
-      "modifiedAt": "2026-08-22T17:49:41.432Z",
+      "modifiedAt": "2026-08-22T23:41:25.262Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -4695,7 +4695,7 @@
       "extension": ".py",
       "language": "python",
       "sizeBytes": 1276,
-      "modifiedAt": "2026-08-22T17:49:40.779Z",
+      "modifiedAt": "2026-08-22T23:41:25.189Z",
       "symbols": [
         "handle_new_rx_page",
         "__lldb_init_module"
@@ -4737,7 +4737,7 @@
       "extension": "",
       "language": "plaintext",
       "sizeBytes": 108,
-      "modifiedAt": "2026-08-22T17:49:40.774Z",
+      "modifiedAt": "2026-08-22T23:41:25.188Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -4752,8 +4752,8 @@
       "relativePath": "ios/Flutter/ephemeral/flutter_native_integration.env",
       "extension": ".env",
       "language": "env",
-      "sizeBytes": 528,
-      "modifiedAt": "2026-08-22T17:49:40.818Z",
+      "sizeBytes": 558,
+      "modifiedAt": "2026-08-22T23:41:25.194Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -4769,8 +4769,8 @@
       "relativePath": "ios/Flutter/flutter_export_environment.sh",
       "extension": ".sh",
       "language": "shell",
-      "sizeBytes": 717,
-      "modifiedAt": "2026-08-22T17:49:40.797Z",
+      "sizeBytes": 747,
+      "modifiedAt": "2026-08-22T23:41:25.190Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -5273,8 +5273,8 @@
       "relativePath": "lib/l10n/app_strings.dart",
       "extension": ".dart",
       "language": "dart",
-      "sizeBytes": 8551,
-      "modifiedAt": "2026-08-14T19:40:46.000Z",
+      "sizeBytes": 9263,
+      "modifiedAt": "2026-08-23T00:11:35.087Z",
       "symbols": [
         "AppStrings",
         "resolveLocale",
@@ -6915,8 +6915,8 @@
       "relativePath": "lib/screens/activation_screen.dart",
       "extension": ".dart",
       "language": "dart",
-      "sizeBytes": 12523,
-      "modifiedAt": "2026-08-14T19:39:24.000Z",
+      "sizeBytes": 11034,
+      "modifiedAt": "2026-08-23T00:11:35.086Z",
       "symbols": [
         "ActivationScreen",
         "createState",
@@ -6930,8 +6930,7 @@
         "package:qr_flutter/qr_flutter.dart",
         "../services/license_service.dart",
         "../main.dart",
-        "../l10n/app_strings.dart",
-        "../config/distribution_config.dart"
+        "../l10n/app_strings.dart"
       ],
       "keywords": [
         "lib",
@@ -6948,35 +6947,35 @@
         {
           "name": "ActivationScreen",
           "kind": "type",
-          "line": 9,
+          "line": 8,
           "signature": "class ActivationScreen extends StatefulWidget {"
         },
         {
           "name": "createState",
           "kind": "function",
-          "line": 13,
+          "line": 12,
           "signature": "State<ActivationScreen> createState() => _ActivationScreenState();"
         },
         {
           "name": "_ActivationScreenState",
           "kind": "type",
-          "line": 16,
+          "line": 15,
           "signature": "class _ActivationScreenState extends State<ActivationScreen> {"
         },
         {
           "name": "_verifyLicense",
           "kind": "function",
-          "line": 20,
+          "line": 19,
           "signature": "Future<void> _verifyLicense() async {"
         },
         {
           "name": "build",
           "kind": "function",
-          "line": 44,
+          "line": 43,
           "signature": "Widget build(BuildContext context) {"
         }
       ],
-      "skeleton": "L9: class ActivationScreen extends StatefulWidget {\nL16: class _ActivationScreenState extends State<ActivationScreen> {"
+      "skeleton": "L8: class ActivationScreen extends StatefulWidget {\nL15: class _ActivationScreenState extends State<ActivationScreen> {"
     },
     {
       "relativePath": "lib/screens/add_profile_screen.dart",
@@ -9068,8 +9067,8 @@
       "relativePath": "lib/screens/trial_intro_screen.dart",
       "extension": ".dart",
       "language": "dart",
-      "sizeBytes": 12196,
-      "modifiedAt": "2026-08-13T23:16:19.000Z",
+      "sizeBytes": 11596,
+      "modifiedAt": "2026-08-23T00:11:35.086Z",
       "symbols": [
         "TrialIntroScreen",
         "createState",
@@ -9077,14 +9076,13 @@
         "_startTrial",
         "build",
         "_TrialBadge",
-        "_ActivationCard"
+        "_PhoneAppCard"
       ],
       "imports": [
         "package:flutter/material.dart",
         "package:google_fonts/google_fonts.dart",
         "package:qr_flutter/qr_flutter.dart",
         "../main.dart",
-        "../config/distribution_config.dart",
         "../l10n/app_strings.dart",
         "../services/license_service.dart"
       ],
@@ -9099,66 +9097,67 @@
         "start",
         "build",
         "badge",
-        "activation",
+        "phone",
+        "app",
         "card"
       ],
       "symbolDetails": [
         {
           "name": "TrialIntroScreen",
           "kind": "type",
-          "line": 10,
+          "line": 9,
           "signature": "class TrialIntroScreen extends StatefulWidget {"
         },
         {
           "name": "createState",
           "kind": "function",
-          "line": 14,
+          "line": 13,
           "signature": "State<TrialIntroScreen> createState() => _TrialIntroScreenState();"
         },
         {
           "name": "_TrialIntroScreenState",
           "kind": "type",
-          "line": 17,
+          "line": 16,
           "signature": "class _TrialIntroScreenState extends State<TrialIntroScreen> {"
         },
         {
           "name": "_startTrial",
           "kind": "function",
-          "line": 20,
+          "line": 19,
           "signature": "Future<void> _startTrial() async {"
         },
         {
           "name": "build",
           "kind": "function",
-          "line": 32,
+          "line": 31,
           "signature": "Widget build(BuildContext context) {"
         },
         {
           "name": "_TrialBadge",
           "kind": "type",
-          "line": 202,
+          "line": 189,
           "signature": "class _TrialBadge extends StatelessWidget {"
         },
         {
           "name": "build",
           "kind": "function",
-          "line": 208,
+          "line": 195,
           "signature": "Widget build(BuildContext context) {"
         },
         {
-          "name": "_ActivationCard",
+          "name": "_PhoneAppCard",
           "kind": "type",
-          "line": 231,
-          "signature": "class _ActivationCard extends StatelessWidget {"
+          "line": 218,
+          "signature": "class _PhoneAppCard extends StatelessWidget {"
         },
         {
           "name": "build",
           "kind": "function",
-          "line": 237,
+          "line": 224,
           "signature": "Widget build(BuildContext context) {"
         }
       ],
-      "skeleton": "L10: class TrialIntroScreen extends StatefulWidget {\nL17: class _TrialIntroScreenState extends State<TrialIntroScreen> {\nL202: class _TrialBadge extends StatelessWidget {\nL231: class _ActivationCard extends StatelessWidget {"
+      "skeleton": "L9: class TrialIntroScreen extends StatefulWidget {\nL16: class _TrialIntroScreenState extends State<TrialIntroScreen> {\nL189: class _TrialBadge extends StatelessWidget {\nL218: class _PhoneAppCard extends StatelessWidget {"
     },
     {
       "relativePath": "lib/screens/user_selection_screen.dart",
@@ -9873,8 +9872,8 @@
       "relativePath": "lib/services/license_service.dart",
       "extension": ".dart",
       "language": "dart",
-      "sizeBytes": 15136,
-      "modifiedAt": "2026-08-16T17:08:12.125Z",
+      "sizeBytes": 15423,
+      "modifiedAt": "2026-08-23T00:11:35.085Z",
       "symbols": [
         "LicenseStatus",
         "LicenseService",
@@ -9941,61 +9940,61 @@
         {
           "name": "calculateTrialDaysRemaining",
           "kind": "function",
-          "line": 89,
+          "line": 98,
           "signature": "static int calculateTrialDaysRemaining(DateTime startedAt, {DateTime? now}) {"
         },
         {
           "name": "init",
           "kind": "function",
-          "line": 100,
+          "line": 109,
           "signature": "static Future<void> init() async {"
         },
         {
           "name": "completeTrialIntroduction",
           "kind": "function",
-          "line": 178,
+          "line": 187,
           "signature": "static Future<void> completeTrialIntroduction() async {"
         },
         {
           "name": "refreshStatus",
           "kind": "function",
-          "line": 187,
+          "line": 196,
           "signature": "static Future<bool> refreshStatus({bool silent = false}) async {"
         },
         {
           "name": "_loadDeviceIdentity",
           "kind": "function",
-          "line": 306,
+          "line": 315,
           "signature": "static Future<void> _loadDeviceIdentity() async {"
         },
         {
           "name": "_validateLicenseToken",
           "kind": "function",
-          "line": 346,
+          "line": 355,
           "signature": "static Future<LicenseStatus?> _validateLicenseToken(String token) async {"
         },
         {
           "name": "_endpoint",
           "kind": "function",
-          "line": 390,
+          "line": 399,
           "signature": "static Uri _endpoint(String path) {"
         },
         {
           "name": "_serverError",
           "kind": "function",
-          "line": 397,
+          "line": 406,
           "signature": "static String _serverError(http.Response response, String fallback) {"
         },
         {
           "name": "_generateLegacyDeviceId",
           "kind": "function",
-          "line": 407,
+          "line": 416,
           "signature": "static String _generateLegacyDeviceId() {"
         },
         {
           "name": "resetTrial",
           "kind": "function",
-          "line": 413,
+          "line": 422,
           "signature": "static Future<void> resetTrial() async {"
         }
       ],
@@ -10827,8 +10826,8 @@
       "relativePath": "lib/services/remote_profile_service.dart",
       "extension": ".dart",
       "language": "dart",
-      "sizeBytes": 3846,
-      "modifiedAt": "2026-08-14T19:39:24.000Z",
+      "sizeBytes": 3981,
+      "modifiedAt": "2026-08-23T01:16:20.090Z",
       "symbols": [
         "RemoteProfilePairing",
         "RemoteProfileService",
@@ -10877,13 +10876,13 @@
         {
           "name": "pullProfile",
           "kind": "function",
-          "line": 76,
+          "line": 78,
           "signature": "static Future<Profile?> pullProfile(RemoteProfilePairing pairing) async {"
         },
         {
           "name": "_endpoint",
           "kind": "function",
-          "line": 110,
+          "line": 112,
           "signature": "static Uri _endpoint(String path) {"
         }
       ],
@@ -11685,8 +11684,8 @@
       "relativePath": "lib/widgets/settings_overlay.dart",
       "extension": ".dart",
       "language": "dart",
-      "sizeBytes": 64696,
-      "modifiedAt": "2026-08-21T02:46:55.672Z",
+      "sizeBytes": 66195,
+      "modifiedAt": "2026-08-23T00:21:38.556Z",
       "symbols": [
         "SettingsOverlay",
         "createState",
@@ -11822,209 +11821,209 @@
         {
           "name": "dispose",
           "kind": "function",
-          "line": 54,
+          "line": 57,
           "signature": "void dispose() {"
         },
         {
           "name": "_scrollToFocused",
           "kind": "function",
-          "line": 60,
+          "line": 63,
           "signature": "void _scrollToFocused() {"
         },
         {
           "name": "_handleLeftRight",
           "kind": "function",
-          "line": 73,
+          "line": 76,
           "signature": "void _handleLeftRight(int delta) {"
         },
         {
           "name": "_toggleParentalControl",
           "kind": "function",
-          "line": 201,
+          "line": 204,
           "signature": "Future<void> _toggleParentalControl(SettingsProvider settings) async {"
         },
         {
           "name": "_openCompanionDialog",
           "kind": "function",
-          "line": 251,
+          "line": 254,
           "signature": "Future<void> _openCompanionDialog(SettingsProvider settings) async {"
         },
         {
           "name": "_buildFocusWrapper",
           "kind": "function",
-          "line": 261,
+          "line": 264,
           "signature": "Widget _buildFocusWrapper(int index, Widget child) {"
         },
         {
           "name": "build",
           "kind": "function",
-          "line": 281,
+          "line": 284,
           "signature": "Widget build(BuildContext context) {"
         },
         {
           "name": "_buildTitleSection",
           "kind": "function",
-          "line": 515,
+          "line": 518,
           "signature": "Widget _buildTitleSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildProfileSection",
           "kind": "function",
-          "line": 547,
+          "line": 550,
           "signature": "Widget _buildProfileSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildParentalSection",
           "kind": "function",
-          "line": 633,
+          "line": 636,
           "signature": "Widget _buildParentalSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildCompanionSection",
           "kind": "function",
-          "line": 721,
+          "line": 724,
           "signature": "Widget _buildCompanionSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildTrackSection",
           "kind": "function",
-          "line": 775,
+          "line": 778,
           "signature": "Widget _buildTrackSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildStartupSection",
           "kind": "function",
-          "line": 844,
+          "line": 847,
           "signature": "Widget _buildStartupSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildAutoStartSection",
           "kind": "function",
-          "line": 899,
+          "line": 902,
           "signature": "Widget _buildAutoStartSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildPlaybackEngineSection",
           "kind": "function",
-          "line": 956,
+          "line": 959,
           "signature": "Widget _buildPlaybackEngineSection(SettingsProvider settings) {"
         },
         {
           "name": "selectEngine",
           "kind": "function",
-          "line": 960,
+          "line": 963,
           "signature": "void selectEngine(String engine) {"
         },
         {
           "name": "_buildQualitySection",
           "kind": "function",
-          "line": 1019,
+          "line": 1022,
           "signature": "Widget _buildQualitySection(SettingsProvider settings) {"
         },
         {
           "name": "_buildLiveRefreshRateSection",
           "kind": "function",
-          "line": 1074,
+          "line": 1077,
           "signature": "Widget _buildLiveRefreshRateSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildLanguageSection",
           "kind": "function",
-          "line": 1117,
+          "line": 1120,
           "signature": "Widget _buildLanguageSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildOpacitySection",
           "kind": "function",
-          "line": 1142,
+          "line": 1145,
           "signature": "Widget _buildOpacitySection(SettingsProvider settings) {"
         },
         {
           "name": "_buildAutoHideSection",
           "kind": "function",
-          "line": 1172,
+          "line": 1175,
           "signature": "Widget _buildAutoHideSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildIconColorSection",
           "kind": "function",
-          "line": 1261,
+          "line": 1264,
           "signature": "Widget _buildIconColorSection(SettingsProvider settings) {"
         },
         {
           "name": "_buildColorOption",
           "kind": "function",
-          "line": 1374,
+          "line": 1377,
           "signature": "Widget _buildColorOption(Color color, SettingsProvider settings) {"
         },
         {
           "name": "_buildAutoSaveHint",
           "kind": "function",
-          "line": 1405,
+          "line": 1408,
           "signature": "Widget _buildAutoSaveHint(SettingsProvider settings) {"
         },
         {
           "name": "_buildDeviceCode",
           "kind": "function",
-          "line": 1430,
+          "line": 1433,
           "signature": "Widget _buildDeviceCode(SettingsProvider settings) {"
         },
         {
           "name": "_HiddenCategoriesDialog",
           "kind": "type",
-          "line": 1692,
+          "line": 1731,
           "signature": "class _HiddenCategoriesDialog extends StatefulWidget {"
         },
         {
           "name": "createState",
           "kind": "function",
-          "line": 1702,
+          "line": 1741,
           "signature": "State<_HiddenCategoriesDialog> createState() =>"
         },
         {
           "name": "_HiddenCategoriesDialogState",
           "kind": "type",
-          "line": 1706,
+          "line": 1745,
           "signature": "class _HiddenCategoriesDialogState extends State<_HiddenCategoriesDialog> {"
         },
         {
           "name": "_text",
           "kind": "function",
-          "line": 1713,
+          "line": 1752,
           "signature": "String _text(String tr, String en, String de) {"
         },
         {
           "name": "_typeLabel",
           "kind": "function",
-          "line": 1724,
+          "line": 1763,
           "signature": "String _typeLabel(String type) {"
         },
         {
           "name": "_restoreFocused",
           "kind": "function",
-          "line": 1737,
+          "line": 1776,
           "signature": "Future<void> _restoreFocused() async {"
         },
         {
           "name": "_handleKey",
           "kind": "function",
-          "line": 1755,
+          "line": 1794,
           "signature": "KeyEventResult _handleKey(KeyEvent event) {"
         },
         {
           "name": "dispose",
           "kind": "function",
-          "line": 1784,
+          "line": 1823,
           "signature": "void dispose() {"
         },
         {
           "name": "build",
           "kind": "function",
-          "line": 1790,
+          "line": 1829,
           "signature": "Widget build(BuildContext context) {"
         }
       ],
-      "skeleton": "L14: class SettingsOverlay extends StatefulWidget {\nL34: class _SettingsOverlayState extends State<SettingsOverlay> {\nL1692: class _HiddenCategoriesDialog extends StatefulWidget {\nL1706: class _HiddenCategoriesDialogState extends State<_HiddenCategoriesDialog> {"
+      "skeleton": "L14: class SettingsOverlay extends StatefulWidget {\nL34: class _SettingsOverlayState extends State<SettingsOverlay> {\nL1731: class _HiddenCategoriesDialog extends StatefulWidget {\nL1745: class _HiddenCategoriesDialogState extends State<_HiddenCategoriesDialog> {"
     },
     {
       "relativePath": "lib/widgets/top_nav_bar.dart",
@@ -12594,8 +12593,8 @@
       "relativePath": "macos/Flutter/ephemeral/Flutter-Generated.xcconfig",
       "extension": ".xcconfig",
       "language": "xcconfig",
-      "sizeBytes": 573,
-      "modifiedAt": "2026-08-22T17:49:40.822Z",
+      "sizeBytes": 603,
+      "modifiedAt": "2026-08-22T23:41:25.195Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -12611,7 +12610,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 464,
-      "modifiedAt": "2026-08-22T17:49:41.502Z",
+      "modifiedAt": "2026-08-23T01:24:24.872Z",
       "symbols": [],
       "imports": [
         "PackageDescription"
@@ -12631,7 +12630,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 38,
-      "modifiedAt": "2026-08-22T17:49:41.498Z",
+      "modifiedAt": "2026-08-23T01:24:24.871Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -12649,7 +12648,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 1779,
-      "modifiedAt": "2026-08-22T17:49:41.504Z",
+      "modifiedAt": "2026-08-23T01:24:24.873Z",
       "symbols": [],
       "imports": [
         "PackageDescription"
@@ -12671,7 +12670,7 @@
       "extension": ".swift",
       "language": "swift",
       "sizeBytes": 38,
-      "modifiedAt": "2026-08-22T17:49:41.503Z",
+      "modifiedAt": "2026-08-22T23:41:25.275Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -12691,8 +12690,8 @@
       "relativePath": "macos/Flutter/ephemeral/flutter_export_environment.sh",
       "extension": ".sh",
       "language": "shell",
-      "sizeBytes": 681,
-      "modifiedAt": "2026-08-22T17:49:40.823Z",
+      "sizeBytes": 711,
+      "modifiedAt": "2026-08-22T23:41:25.195Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -12708,8 +12707,8 @@
       "relativePath": "macos/Flutter/ephemeral/flutter_native_integration.env",
       "extension": ".env",
       "language": "env",
-      "sizeBytes": 501,
-      "modifiedAt": "2026-08-22T17:49:40.840Z",
+      "sizeBytes": 531,
+      "modifiedAt": "2026-08-22T23:41:25.197Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -13402,6 +13401,36 @@
       "symbolDetails": []
     },
     {
+      "relativePath": "public/remote/index.html",
+      "extension": ".html",
+      "language": "html",
+      "sizeBytes": 724,
+      "modifiedAt": "2026-08-23T00:11:35.088Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "remote",
+        "index"
+      ],
+      "symbolDetails": []
+    },
+    {
+      "relativePath": "public/remote/styles.css",
+      "extension": ".css",
+      "language": "css",
+      "sizeBytes": 930,
+      "modifiedAt": "2026-08-23T00:11:35.088Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "remote",
+        "styles"
+      ],
+      "symbolDetails": []
+    },
+    {
       "relativePath": "public/setup/setup.css",
       "extension": ".css",
       "language": "css",
@@ -13460,8 +13489,8 @@
       "relativePath": "pubspec.yaml",
       "extension": ".yaml",
       "language": "yaml",
-      "sizeBytes": 967,
-      "modifiedAt": "2026-08-14T01:42:41.000Z",
+      "sizeBytes": 964,
+      "modifiedAt": "2026-08-23T00:21:38.556Z",
       "symbols": [
         "name",
         "description",
@@ -13540,8 +13569,8 @@
       "relativePath": "scripts/build_protected_release.sh",
       "extension": ".sh",
       "language": "shell",
-      "sizeBytes": 1602,
-      "modifiedAt": "2026-08-14T19:40:46.000Z",
+      "sizeBytes": 2080,
+      "modifiedAt": "2026-08-23T00:11:35.086Z",
       "symbols": [],
       "imports": [],
       "keywords": [
@@ -14340,6 +14369,38 @@
       "symbolDetails": []
     },
     {
+      "relativePath": "server/public/remote/index.html",
+      "extension": ".html",
+      "language": "html",
+      "sizeBytes": 724,
+      "modifiedAt": "2026-08-23T00:11:35.088Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "server",
+        "public",
+        "remote",
+        "index"
+      ],
+      "symbolDetails": []
+    },
+    {
+      "relativePath": "server/public/remote/styles.css",
+      "extension": ".css",
+      "language": "css",
+      "sizeBytes": 930,
+      "modifiedAt": "2026-08-23T00:11:35.088Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "server",
+        "public",
+        "remote",
+        "styles"
+      ],
+      "symbolDetails": []
+    },
+    {
       "relativePath": "server/public/setup/setup.css",
       "extension": ".css",
       "language": "css",
@@ -14593,7 +14654,7 @@
       "extension": ".js",
       "language": "javascript",
       "sizeBytes": 5517,
-      "modifiedAt": "2026-08-22T23:24:37.955Z",
+      "modifiedAt": "2026-08-23T01:37:24.703Z",
       "symbols": [
         "required",
         "positiveInteger",
@@ -14676,12 +14737,12 @@
       "relativePath": "server/src/license_crypto.js",
       "extension": ".js",
       "language": "javascript",
-      "sizeBytes": 1642,
-      "modifiedAt": "2026-08-12T08:58:32.000Z",
+      "sizeBytes": 1709,
+      "modifiedAt": "2026-08-23T01:23:39.586Z",
       "symbols": [
         "base64UrlEncode",
         "base64UrlDecode",
-        "deviceCodeForPublicKey",
+        "deviceCodeForBinding",
         "validateDeviceIdentity",
         "newChallenge",
         "verifyChallengeSignature",
@@ -14700,8 +14761,7 @@
         "device",
         "code",
         "for",
-        "public",
-        "key",
+        "binding",
         "validate",
         "identity",
         "new",
@@ -14715,26 +14775,26 @@
         {
           "name": "base64UrlEncode",
           "kind": "function",
-          "line": 10,
+          "line": 9,
           "signature": "export function base64UrlEncode(value) {"
         },
         {
           "name": "base64UrlDecode",
           "kind": "function",
-          "line": 14,
+          "line": 13,
           "signature": "export function base64UrlDecode(value) {"
         },
         {
-          "name": "deviceCodeForPublicKey",
+          "name": "deviceCodeForBinding",
           "kind": "function",
-          "line": 18,
-          "signature": "export function deviceCodeForPublicKey(publicKeyDer) {"
+          "line": 17,
+          "signature": "export function deviceCodeForBinding(deviceBinding) {"
         },
         {
           "name": "validateDeviceIdentity",
           "kind": "function",
           "line": 24,
-          "signature": "export function validateDeviceIdentity(deviceCode, publicKeyText) {"
+          "signature": "export function validateDeviceIdentity(deviceCode, publicKeyText, deviceBinding) {"
         },
         {
           "name": "newChallenge",
@@ -14755,7 +14815,7 @@
           "signature": "export function issueLicenseToken(privateKeyPem, claims) {"
         }
       ],
-      "skeleton": "L10: export function base64UrlEncode(value) {\nL14: export function base64UrlDecode(value) {\nL18: export function deviceCodeForPublicKey(publicKeyDer) {\nL24: export function validateDeviceIdentity(deviceCode, publicKeyText) {\nL30: export function newChallenge() {\nL34: export function verifyChallengeSignature(publicKeyText, nonce, signatureText) {\nL48: export function issueLicenseToken(privateKeyPem, claims) {"
+      "skeleton": "L9: export function base64UrlEncode(value) {\nL13: export function base64UrlDecode(value) {\nL17: export function deviceCodeForBinding(deviceBinding) {\nL24: export function validateDeviceIdentity(deviceCode, publicKeyText, deviceBinding) {\nL30: export function newChallenge() {\nL34: export function verifyChallengeSignature(publicKeyText, nonce, signatureText) {\nL48: export function issueLicenseToken(privateKeyPem, claims) {"
     },
     {
       "relativePath": "server/src/local.js",
@@ -14995,8 +15055,8 @@
       "relativePath": "server/src/server.js",
       "extension": ".js",
       "language": "javascript",
-      "sizeBytes": 44412,
-      "modifiedAt": "2026-08-14T19:40:46.000Z",
+      "sizeBytes": 44588,
+      "modifiedAt": "2026-08-23T01:16:20.088Z",
       "symbols": [
         "json",
         "applySecurityHeaders",
@@ -15233,113 +15293,113 @@
         {
           "name": "submitRemoteProfile",
           "kind": "function",
-          "line": 547,
+          "line": 550,
           "signature": "async function submitRemoteProfile(request, response) {"
         },
         {
           "name": "pullRemoteProfile",
           "kind": "function",
-          "line": 604,
+          "line": 607,
           "signature": "async function pullRemoteProfile(request, response, pairingId) {"
         },
         {
           "name": "verifyLicense",
           "kind": "function",
-          "line": 632,
+          "line": 635,
           "signature": "async function verifyLicense(request, response) {"
         },
         {
           "name": "activateLicense",
           "kind": "function",
-          "line": 749,
+          "line": 752,
           "signature": "async function activateLicense(request, response) {"
         },
         {
           "name": "revokeLicense",
           "kind": "function",
-          "line": 805,
+          "line": 808,
           "signature": "async function revokeLicense(request, response, licenseId) {"
         },
         {
           "name": "listDevices",
           "kind": "function",
-          "line": 827,
+          "line": 830,
           "signature": "async function listDevices(request, response) {"
         },
         {
           "name": "dashboard",
           "kind": "function",
-          "line": 845,
+          "line": 848,
           "signature": "async function dashboard(request, response) {"
         },
         {
           "name": "listAuditEvents",
           "kind": "function",
-          "line": 859,
+          "line": 862,
           "signature": "async function listAuditEvents(request, response) {"
         },
         {
           "name": "listPayments",
           "kind": "function",
-          "line": 871,
+          "line": 874,
           "signature": "async function listPayments(request, response) {"
         },
         {
           "name": "createAdminSession",
           "kind": "function",
-          "line": 886,
+          "line": 889,
           "signature": "async function createAdminSession(request, response) {"
         },
         {
           "name": "currentAdminSession",
           "kind": "function",
-          "line": 953,
+          "line": 956,
           "signature": "async function currentAdminSession(request, response) {"
         },
         {
           "name": "deleteAdminSession",
           "kind": "function",
-          "line": 960,
+          "line": 963,
           "signature": "async function deleteAdminSession(request, response) {"
         },
         {
           "name": "serveAdminAsset",
           "kind": "function",
-          "line": 986,
+          "line": 989,
           "signature": "async function serveAdminAsset(response, pathname) {"
         },
         {
           "name": "servePrivacyPage",
           "kind": "function",
-          "line": 1013,
+          "line": 1016,
           "signature": "function servePrivacyPage(request, response, url) {"
         },
         {
           "name": "ensureBootstrapAdmin",
           "kind": "function",
-          "line": 1040,
+          "line": 1043,
           "signature": "async function ensureBootstrapAdmin() {"
         },
         {
           "name": "initializeServer",
           "kind": "function",
-          "line": 1055,
+          "line": 1058,
           "signature": "export function initializeServer() {"
         },
         {
           "name": "requestHandler",
           "kind": "function",
-          "line": 1063,
+          "line": 1066,
           "signature": "export async function requestHandler(request, response) {"
         },
         {
           "name": "closeServerResources",
           "kind": "function",
-          "line": 1147,
+          "line": 1150,
           "signature": "export async function closeServerResources() {"
         }
       ],
-      "skeleton": "L41: function json(response, statusCode, payload, extraHeaders = {}) {\nL51: function applySecurityHeaders(response, requestId) {\nL93: function text(value, max = 160) {\nL99: function validPlaylistUrl(value) {\nL112: function remoteProfileKey() {\nL145: function requestIp(request) {\nL154: function rateLimitSubject(value) {\nL196: function requireTrustedAdminOrigin(request) {\nL317: function sha256(value) {\nL1013: function servePrivacyPage(request, response, url) {\nL1055: export function initializeServer() {\nL1063: export async function requestHandler(request, response) {\nL1147: export async function closeServerResources() {"
+      "skeleton": "L41: function json(response, statusCode, payload, extraHeaders = {}) {\nL51: function applySecurityHeaders(response, requestId) {\nL93: function text(value, max = 160) {\nL99: function validPlaylistUrl(value) {\nL112: function remoteProfileKey() {\nL145: function requestIp(request) {\nL154: function rateLimitSubject(value) {\nL196: function requireTrustedAdminOrigin(request) {\nL317: function sha256(value) {\nL1016: function servePrivacyPage(request, response, url) {\nL1058: export function initializeServer() {\nL1066: export async function requestHandler(request, response) {\nL1150: export async function closeServerResources() {"
     },
     {
       "relativePath": "server/supabase/README.md",
@@ -15465,8 +15525,8 @@
       "relativePath": "server/test/license_crypto.test.js",
       "extension": ".js",
       "language": "javascript",
-      "sizeBytes": 1710,
-      "modifiedAt": "2026-08-12T08:58:32.000Z",
+      "sizeBytes": 1774,
+      "modifiedAt": "2026-08-23T01:16:20.090Z",
       "symbols": [
         "keys"
       ],
@@ -15553,8 +15613,8 @@
       "relativePath": "server/vercel.json",
       "extension": ".json",
       "language": "json",
-      "sizeBytes": 1666,
-      "modifiedAt": "2026-08-22T23:06:01.592Z",
+      "sizeBytes": 2232,
+      "modifiedAt": "2026-08-23T00:11:35.088Z",
       "symbols": [
         "$schema",
         "framework",
@@ -15691,7 +15751,7 @@
       "extension": ".js",
       "language": "javascript",
       "sizeBytes": 5517,
-      "modifiedAt": "2026-08-22T23:24:26.394Z",
+      "modifiedAt": "2026-08-23T01:37:18.350Z",
       "symbols": [
         "required",
         "positiveInteger",
@@ -15772,12 +15832,12 @@
       "relativePath": "src/license_crypto.js",
       "extension": ".js",
       "language": "javascript",
-      "sizeBytes": 1642,
-      "modifiedAt": "2026-08-22T23:22:30.582Z",
+      "sizeBytes": 1709,
+      "modifiedAt": "2026-08-23T01:23:39.586Z",
       "symbols": [
         "base64UrlEncode",
         "base64UrlDecode",
-        "deviceCodeForPublicKey",
+        "deviceCodeForBinding",
         "validateDeviceIdentity",
         "newChallenge",
         "verifyChallengeSignature",
@@ -15795,8 +15855,7 @@
         "device",
         "code",
         "for",
-        "public",
-        "key",
+        "binding",
         "validate",
         "identity",
         "new",
@@ -15810,26 +15869,26 @@
         {
           "name": "base64UrlEncode",
           "kind": "function",
-          "line": 10,
+          "line": 9,
           "signature": "export function base64UrlEncode(value) {"
         },
         {
           "name": "base64UrlDecode",
           "kind": "function",
-          "line": 14,
+          "line": 13,
           "signature": "export function base64UrlDecode(value) {"
         },
         {
-          "name": "deviceCodeForPublicKey",
+          "name": "deviceCodeForBinding",
           "kind": "function",
-          "line": 18,
-          "signature": "export function deviceCodeForPublicKey(publicKeyDer) {"
+          "line": 17,
+          "signature": "export function deviceCodeForBinding(deviceBinding) {"
         },
         {
           "name": "validateDeviceIdentity",
           "kind": "function",
           "line": 24,
-          "signature": "export function validateDeviceIdentity(deviceCode, publicKeyText) {"
+          "signature": "export function validateDeviceIdentity(deviceCode, publicKeyText, deviceBinding) {"
         },
         {
           "name": "newChallenge",
@@ -15850,7 +15909,7 @@
           "signature": "export function issueLicenseToken(privateKeyPem, claims) {"
         }
       ],
-      "skeleton": "L10: export function base64UrlEncode(value) {\nL14: export function base64UrlDecode(value) {\nL18: export function deviceCodeForPublicKey(publicKeyDer) {\nL24: export function validateDeviceIdentity(deviceCode, publicKeyText) {\nL30: export function newChallenge() {\nL34: export function verifyChallengeSignature(publicKeyText, nonce, signatureText) {\nL48: export function issueLicenseToken(privateKeyPem, claims) {"
+      "skeleton": "L9: export function base64UrlEncode(value) {\nL13: export function base64UrlDecode(value) {\nL17: export function deviceCodeForBinding(deviceBinding) {\nL24: export function validateDeviceIdentity(deviceCode, publicKeyText, deviceBinding) {\nL30: export function newChallenge() {\nL34: export function verifyChallengeSignature(publicKeyText, nonce, signatureText) {\nL48: export function issueLicenseToken(privateKeyPem, claims) {"
     },
     {
       "relativePath": "src/local.js",
@@ -16086,8 +16145,8 @@
       "relativePath": "src/server.js",
       "extension": ".js",
       "language": "javascript",
-      "sizeBytes": 44412,
-      "modifiedAt": "2026-08-22T23:22:30.581Z",
+      "sizeBytes": 44588,
+      "modifiedAt": "2026-08-23T01:16:20.089Z",
       "symbols": [
         "json",
         "applySecurityHeaders",
@@ -16324,113 +16383,113 @@
         {
           "name": "submitRemoteProfile",
           "kind": "function",
-          "line": 547,
+          "line": 550,
           "signature": "async function submitRemoteProfile(request, response) {"
         },
         {
           "name": "pullRemoteProfile",
           "kind": "function",
-          "line": 604,
+          "line": 607,
           "signature": "async function pullRemoteProfile(request, response, pairingId) {"
         },
         {
           "name": "verifyLicense",
           "kind": "function",
-          "line": 632,
+          "line": 635,
           "signature": "async function verifyLicense(request, response) {"
         },
         {
           "name": "activateLicense",
           "kind": "function",
-          "line": 749,
+          "line": 752,
           "signature": "async function activateLicense(request, response) {"
         },
         {
           "name": "revokeLicense",
           "kind": "function",
-          "line": 805,
+          "line": 808,
           "signature": "async function revokeLicense(request, response, licenseId) {"
         },
         {
           "name": "listDevices",
           "kind": "function",
-          "line": 827,
+          "line": 830,
           "signature": "async function listDevices(request, response) {"
         },
         {
           "name": "dashboard",
           "kind": "function",
-          "line": 845,
+          "line": 848,
           "signature": "async function dashboard(request, response) {"
         },
         {
           "name": "listAuditEvents",
           "kind": "function",
-          "line": 859,
+          "line": 862,
           "signature": "async function listAuditEvents(request, response) {"
         },
         {
           "name": "listPayments",
           "kind": "function",
-          "line": 871,
+          "line": 874,
           "signature": "async function listPayments(request, response) {"
         },
         {
           "name": "createAdminSession",
           "kind": "function",
-          "line": 886,
+          "line": 889,
           "signature": "async function createAdminSession(request, response) {"
         },
         {
           "name": "currentAdminSession",
           "kind": "function",
-          "line": 953,
+          "line": 956,
           "signature": "async function currentAdminSession(request, response) {"
         },
         {
           "name": "deleteAdminSession",
           "kind": "function",
-          "line": 960,
+          "line": 963,
           "signature": "async function deleteAdminSession(request, response) {"
         },
         {
           "name": "serveAdminAsset",
           "kind": "function",
-          "line": 986,
+          "line": 989,
           "signature": "async function serveAdminAsset(response, pathname) {"
         },
         {
           "name": "servePrivacyPage",
           "kind": "function",
-          "line": 1013,
+          "line": 1016,
           "signature": "function servePrivacyPage(request, response, url) {"
         },
         {
           "name": "ensureBootstrapAdmin",
           "kind": "function",
-          "line": 1040,
+          "line": 1043,
           "signature": "async function ensureBootstrapAdmin() {"
         },
         {
           "name": "initializeServer",
           "kind": "function",
-          "line": 1055,
+          "line": 1058,
           "signature": "export function initializeServer() {"
         },
         {
           "name": "requestHandler",
           "kind": "function",
-          "line": 1063,
+          "line": 1066,
           "signature": "export async function requestHandler(request, response) {"
         },
         {
           "name": "closeServerResources",
           "kind": "function",
-          "line": 1147,
+          "line": 1150,
           "signature": "export async function closeServerResources() {"
         }
       ],
-      "skeleton": "L41: function json(response, statusCode, payload, extraHeaders = {}) {\nL51: function applySecurityHeaders(response, requestId) {\nL93: function text(value, max = 160) {\nL99: function validPlaylistUrl(value) {\nL112: function remoteProfileKey() {\nL145: function requestIp(request) {\nL154: function rateLimitSubject(value) {\nL196: function requireTrustedAdminOrigin(request) {\nL317: function sha256(value) {\nL1013: function servePrivacyPage(request, response, url) {\nL1055: export function initializeServer() {\nL1063: export async function requestHandler(request, response) {\nL1147: export async function closeServerResources() {"
+      "skeleton": "L41: function json(response, statusCode, payload, extraHeaders = {}) {\nL51: function applySecurityHeaders(response, requestId) {\nL93: function text(value, max = 160) {\nL99: function validPlaylistUrl(value) {\nL112: function remoteProfileKey() {\nL145: function requestIp(request) {\nL154: function rateLimitSubject(value) {\nL196: function requireTrustedAdminOrigin(request) {\nL317: function sha256(value) {\nL1016: function servePrivacyPage(request, response, url) {\nL1058: export function initializeServer() {\nL1066: export async function requestHandler(request, response) {\nL1150: export async function closeServerResources() {"
     },
     {
       "relativePath": "test/app_strings_test.dart",
@@ -20366,8 +20425,8 @@
       "relativePath": "vercel.json",
       "extension": ".json",
       "language": "json",
-      "sizeBytes": 1165,
-      "modifiedAt": "2026-08-22T23:22:34.247Z",
+      "sizeBytes": 1553,
+      "modifiedAt": "2026-08-23T00:11:35.087Z",
       "symbols": [
         "$schema",
         "rewrites",

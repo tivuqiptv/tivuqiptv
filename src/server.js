@@ -237,12 +237,13 @@ async function createChallenge(request, response) {
          FROM devices WHERE device_code = $1 FOR UPDATE`,
       [deviceCode],
     );
-    if (existing.rowCount && existing.rows[0].public_key_der !== publicKey) {
-      throw Object.assign(new Error('device_identity_conflict'), { status: 409 });
-    }
     if (existing.rowCount && existing.rows[0].device_binding_hash &&
         existing.rows[0].device_binding_hash.trim() !== deviceBinding) {
       throw Object.assign(new Error('device_binding_conflict'), { status: 409 });
+    }
+    if (existing.rowCount && existing.rows[0].public_key_der !== publicKey &&
+        !existing.rows[0].device_binding_hash) {
+      throw Object.assign(new Error('device_identity_conflict'), { status: 409 });
     }
 
     const bound = existing.rowCount
@@ -276,9 +277,16 @@ async function createChallenge(request, response) {
           `UPDATE devices
              SET last_seen_at = now(), model = COALESCE($2, model),
                  app_version = COALESCE($3, app_version),
-                 device_binding_hash = COALESCE(device_binding_hash, $4)
+                 device_binding_hash = COALESCE(device_binding_hash, $4),
+                 public_key_der = $5
            WHERE id = $1 RETURNING id, blocked_at`,
-          [existing.rows[0].id, text(body.model), text(body.appVersion, 32), deviceBinding],
+          [
+            existing.rows[0].id,
+            text(body.model),
+            text(body.appVersion, 32),
+            deviceBinding,
+            publicKey,
+          ],
         )
       : await client.query(
           `INSERT INTO devices

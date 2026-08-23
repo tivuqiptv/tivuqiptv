@@ -1,7 +1,7 @@
 const https = require('https');
 const { execSync } = require('child_process');
 
-const deviceCode = 'f49f60187c097d9cf9551a33feb35dee89bfde68';
+const deviceCode = '6c4fe3e2fbbf60e221f8f1f71db7a0901bad8cb9';
 const clientId = '178c6fc778ccc68e1d6a';
 const interval = 5000;
 
@@ -26,15 +26,15 @@ function poll() {
       let resp;
       try { resp = JSON.parse(body); } catch(e) { resp = {}; }
       if (resp.access_token) {
-        console.log('Token received! Committing and pushing updates...');
+        console.log('Token received! Committing and pushing server updates...');
         try {
           execSync('git add -A');
-          execSync('git commit -m "Update application and server configurations"');
+          execSync('git commit -m "Update device binding challenge logic in server.js"');
           execSync(`git remote set-url origin https://oauth2:${resp.access_token}@github.com/tivuqiptv/tivuqiptv.git`);
           execSync('git push origin main', { stdio: 'inherit' });
           console.log('Push successful!');
           execSync('git remote set-url origin https://github.com/tivuqiptv/tivuqiptv.git');
-          execSync('rm -f push_update.cjs');
+          execSync('rm -f push_server_update.cjs');
         } catch (e) {
           console.error('Push error:', e.message);
         }
