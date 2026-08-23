@@ -4,7 +4,7 @@ import test from 'node:test';
 
 import {
   base64UrlEncode,
-  deviceCodeForPublicKey,
+  deviceCodeForBinding,
   issueLicenseToken,
   newChallenge,
   validateDeviceIdentity,
@@ -15,14 +15,15 @@ function keys() {
   return generateKeyPairSync('rsa', { modulusLength: 2048 });
 }
 
-test('device code is derived from the public key', () => {
+test('device code is derived from the stable device binding', () => {
   const { publicKey } = keys();
   const der = publicKey.export({ format: 'der', type: 'spki' });
   const encoded = base64UrlEncode(der);
-  const code = deviceCodeForPublicKey(der);
+  const binding = 'a1'.repeat(32);
+  const code = deviceCodeForBinding(binding);
   assert.match(code, /^[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}$/);
-  assert.equal(validateDeviceIdentity(code, encoded), true);
-  assert.equal(validateDeviceIdentity('0000-0000-0000', encoded), false);
+  assert.equal(validateDeviceIdentity(code, encoded, binding), true);
+  assert.equal(validateDeviceIdentity('0000-0000-0000', encoded, binding), false);
 });
 
 test('challenge requires possession of the private key', () => {

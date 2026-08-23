@@ -5,6 +5,8 @@
     { "source": "/admin/", "destination": "/admin/index.html" },
     { "source": "/setup", "destination": "/setup/setup.html" },
     { "source": "/setup/", "destination": "/setup/setup.html" },
+    { "source": "/remote", "destination": "/remote/index.html" },
+    { "source": "/remote/", "destination": "/remote/index.html" },
     { "source": "/health", "destination": "/api/index" },
     { "source": "/privacy", "destination": "/api/index" },
     { "source": "/privacy/:path*", "destination": "/api/index" },
@@ -22,6 +24,14 @@
     },
     {
       "source": "/setup/:path*",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "no-referrer" }
+      ]
+    },
+    {
+      "source": "/remote/:path*",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },

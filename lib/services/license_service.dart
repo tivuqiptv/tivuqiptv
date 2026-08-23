@@ -27,6 +27,9 @@ class LicenseService {
   static const String activationBaseUrl = String.fromEnvironment(
     'ACTIVATION_URL',
   );
+  static const String phoneAppDownloadUrl = String.fromEnvironment(
+    'PHONE_APP_DOWNLOAD_URL',
+  );
   static const String licenseServerPublicKey = String.fromEnvironment(
     'LICENSE_SERVER_PUBLIC_KEY',
   );
@@ -76,6 +79,12 @@ class LicenseService {
         'deviceCode': deviceId,
       },
     );
+  }
+
+  static Uri? get phoneAppDownloadUri {
+    final uri = Uri.tryParse(phoneAppDownloadUrl);
+    if (uri == null || !uri.hasScheme || uri.host.isEmpty) return null;
+    return uri;
   }
 
   static int get trialDaysRemaining {

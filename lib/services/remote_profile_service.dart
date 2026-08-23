@@ -39,7 +39,8 @@ class RemoteProfileService {
     );
     final deviceCode = identity?['deviceCode']?.toString();
     final publicKey = identity?['publicKey']?.toString();
-    if (deviceCode == null || publicKey == null) {
+    final deviceBinding = identity?['deviceBinding']?.toString();
+    if (deviceCode == null || publicKey == null || deviceBinding == null) {
       throw StateError('device_identity_unavailable');
     }
     final response = await http
@@ -52,6 +53,7 @@ class RemoteProfileService {
           body: jsonEncode({
             'deviceCode': deviceCode,
             'publicKey': publicKey,
+            'deviceBinding': deviceBinding,
             'model': identity?['model']?.toString(),
           }),
         )

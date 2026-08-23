@@ -1,5 +1,4 @@
 import {
-  createHash,
   createPrivateKey,
   createPublicKey,
   randomBytes,
@@ -15,16 +14,17 @@ export function base64UrlDecode(value) {
   return Buffer.from(value, 'base64url');
 }
 
-export function deviceCodeForPublicKey(publicKeyDer) {
-  const digest = createHash('sha256').update(publicKeyDer).digest('hex');
+export function deviceCodeForBinding(deviceBinding) {
+  const digest = String(deviceBinding).trim().toLowerCase();
+  if (!/^[0-9a-f]{64}$/.test(digest)) throw new Error('invalid_device_binding');
   return `${digest.slice(0, 4)}-${digest.slice(4, 8)}-${digest.slice(8, 12)}`
     .toUpperCase();
 }
 
-export function validateDeviceIdentity(deviceCode, publicKeyText) {
+export function validateDeviceIdentity(deviceCode, publicKeyText, deviceBinding) {
   const publicKeyDer = base64UrlDecode(publicKeyText);
   createPublicKey({ key: publicKeyDer, format: 'der', type: 'spki' });
-  return deviceCodeForPublicKey(publicKeyDer) === deviceCode.toUpperCase();
+  return deviceCodeForBinding(deviceBinding) === deviceCode.toUpperCase();
 }
 
 export function newChallenge() {

@@ -61,8 +61,8 @@ class DeviceIdentityPlugin(
     private fun identity(): Map<String, Any> {
         val keyPair = getOrCreateKeyPair()
         val publicKey = keyPair.certificate.publicKey.encoded
-        val digest = MessageDigest.getInstance("SHA-256").digest(publicKey)
-        val hex = digest.take(6).joinToString("") { "%02X".format(it) }
+        val binding = deviceBinding()
+        val hex = binding.take(12).uppercase()
         val deviceCode = "${hex.substring(0, 4)}-${hex.substring(4, 8)}-${hex.substring(8, 12)}"
         return mapOf(
             "deviceCode" to deviceCode,
@@ -72,7 +72,7 @@ class DeviceIdentityPlugin(
             "model" to "${Build.MANUFACTURER} ${Build.MODEL}".trim(),
             "hardwareBacked" to isHardwareBacked(),
             "signingCertificateSha256" to signingCertificateSha256(),
-            "deviceBinding" to deviceBinding(),
+            "deviceBinding" to binding,
         )
     }
 
@@ -182,8 +182,9 @@ class DeviceIdentityPlugin(
         Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING,
     )
 
-    private fun decode(value: String): ByteArray = Base64.decode(
-        value,
-        Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING,
-    )
+    private fun decode(value: String): ByteArray {
+        val standard = value.replace('-', '+').replace('_', '/')
+        val padded = standard + "=".repeat((4 - standard.length % 4) % 4)
+        return Base64.decode(padded, Base64.DEFAULT)
+    }
 }

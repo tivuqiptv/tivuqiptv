@@ -214,7 +214,7 @@ async function createChallenge(request, response) {
   }
 
   try {
-    if (!validateDeviceIdentity(deviceCode, publicKey)) {
+    if (!validateDeviceIdentity(deviceCode, publicKey, deviceBinding)) {
       return json(response, 400, { error: 'device_code_public_key_mismatch' });
     }
   } catch {
@@ -487,10 +487,12 @@ async function createRemoteProfilePairing(request, response) {
   const body = await readJson(request);
   const deviceCode = text(body.deviceCode, 14)?.toUpperCase();
   const publicKey = text(body.publicKey, 4096);
+  const deviceBinding = text(body.deviceBinding, 64)?.toLowerCase();
   let validIdentity = false;
   try {
     validIdentity = Boolean(
-      deviceCode && publicKey && validateDeviceIdentity(deviceCode, publicKey),
+      deviceCode && publicKey && deviceBinding &&
+      validateDeviceIdentity(deviceCode, publicKey, deviceBinding),
     );
   } catch {
     validIdentity = false;
@@ -507,9 +509,10 @@ async function createRemoteProfilePairing(request, response) {
       `UPDATE devices SET last_seen_at = now(),
               model = COALESCE($3, model), app_version = COALESCE($4, app_version)
         WHERE device_code = $1 AND public_key_der = $2
+          AND device_binding_hash = $5
           AND privacy_deleted_at IS NULL
         RETURNING id, public_key_der, blocked_at`,
-      [deviceCode, publicKey, text(body.model), text(body.appVersion, 32)],
+      [deviceCode, publicKey, text(body.model), text(body.appVersion, 32), deviceBinding],
     );
     if (!device.rowCount) {
       throw Object.assign(new Error('device_not_registered'), { status: 403 });

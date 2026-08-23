@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../main.dart';
-import '../config/distribution_config.dart';
 import '../l10n/app_strings.dart';
 import '../services/license_service.dart';
 
@@ -31,8 +30,7 @@ class _TrialIntroScreenState extends State<TrialIntroScreen> {
   @override
   Widget build(BuildContext context) {
     final strings = AppStrings.of(context);
-    final isAmazonAppstore = DistributionConfig.isAmazonAppstore;
-    final activationUri = LicenseService.activationUri;
+    final downloadUri = LicenseService.phoneAppDownloadUri;
     final deviceCode = LicenseService.deviceId;
     final expiry = LicenseService.trialExpiresAt;
     final expiryText = expiry == null
@@ -48,9 +46,7 @@ class _TrialIntroScreenState extends State<TrialIntroScreen> {
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 42, vertical: 28),
               child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: isAmazonAppstore ? 820 : 1060,
-                ),
+                constraints: const BoxConstraints(maxWidth: 1060),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: const Color(0xFF151123),
@@ -72,14 +68,9 @@ class _TrialIntroScreenState extends State<TrialIntroScreen> {
                         Expanded(
                           flex: 5,
                           child: Align(
-                            alignment: isAmazonAppstore
-                                ? Alignment.center
-                                : Alignment.centerLeft,
+                            alignment: Alignment.centerLeft,
                             child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                maxWidth:
-                                    isAmazonAppstore ? 680 : double.infinity,
-                              ),
+                              constraints: const BoxConstraints(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,15 +168,11 @@ class _TrialIntroScreenState extends State<TrialIntroScreen> {
                             ),
                           ),
                         ),
-                        if (!isAmazonAppstore) ...[
-                          const SizedBox(width: 42),
-                          Expanded(
-                            flex: 3,
-                            child: _ActivationCard(
-                              activationUri: activationUri,
-                            ),
-                          ),
-                        ],
+                        const SizedBox(width: 42),
+                        Expanded(
+                          flex: 3,
+                          child: _PhoneAppCard(downloadUri: downloadUri),
+                        ),
                       ],
                     ),
                   ),
@@ -228,10 +215,10 @@ class _TrialBadge extends StatelessWidget {
   }
 }
 
-class _ActivationCard extends StatelessWidget {
-  const _ActivationCard({required this.activationUri});
+class _PhoneAppCard extends StatelessWidget {
+  const _PhoneAppCard({required this.downloadUri});
 
-  final Uri? activationUri;
+  final Uri? downloadUri;
 
   @override
   Widget build(BuildContext context) {
@@ -246,7 +233,7 @@ class _ActivationCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (activationUri != null)
+          if (downloadUri != null)
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
@@ -254,7 +241,7 @@ class _ActivationCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(17),
               ),
               child: QrImageView(
-                data: activationUri.toString(),
+                data: downloadUri.toString(),
                 version: QrVersions.auto,
                 size: 180,
                 backgroundColor: Colors.white,
@@ -276,7 +263,7 @@ class _ActivationCard extends StatelessWidget {
             ),
           const SizedBox(height: 18),
           Text(
-            strings.licenseAndPaymentLink,
+            strings.downloadPhoneApp,
             textAlign: TextAlign.center,
             style: GoogleFonts.inter(
               color: Colors.white,
@@ -286,7 +273,7 @@ class _ActivationCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            activationUri?.toString() ?? strings.paymentAddressPending,
+            downloadUri?.toString() ?? strings.phoneAppAddressPending,
             textAlign: TextAlign.center,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
@@ -298,7 +285,7 @@ class _ActivationCard extends StatelessWidget {
           ),
           const SizedBox(height: 14),
           Text(
-            strings.buyBeforeTrialEnds(LicenseService.trialDays),
+            strings.phoneAppCompanionDescription,
             textAlign: TextAlign.center,
             style: GoogleFonts.inter(
               color: Colors.white38,

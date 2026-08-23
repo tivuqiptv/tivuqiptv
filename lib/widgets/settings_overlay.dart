@@ -48,6 +48,9 @@ class _SettingsOverlayState extends State<SettingsOverlay> {
   void initState() {
     super.initState();
     _focusNode.requestFocus();
+    LicenseService.refreshStatus(silent: true).then((_) {
+      if (mounted) setState(() {});
+    });
   }
 
   @override
@@ -1433,6 +1436,29 @@ class _SettingsOverlayState extends State<SettingsOverlay> {
         : settings.language == 'de'
             ? 'Gerätecode'
             : 'Device Code';
+    final status = LicenseService.status;
+    final statusLabel = switch (status) {
+      LicenseStatus.active => settings.language == 'tr'
+          ? 'Lisanslı'
+          : settings.language == 'de'
+              ? 'Lizenziert'
+              : 'Licensed',
+      LicenseStatus.trial => settings.language == 'tr'
+          ? 'Deneme (${LicenseService.trialDaysRemaining} gün)'
+          : settings.language == 'de'
+              ? 'Test (${LicenseService.trialDaysRemaining} Tage)'
+              : 'Trial (${LicenseService.trialDaysRemaining} days)',
+      LicenseStatus.expired => settings.language == 'tr'
+          ? 'Lisanssız'
+          : settings.language == 'de'
+              ? 'Nicht lizenziert'
+              : 'Unlicensed',
+    };
+    final statusColor = switch (status) {
+      LicenseStatus.active => Colors.greenAccent,
+      LicenseStatus.trial => Colors.amberAccent,
+      LicenseStatus.expired => Colors.redAccent,
+    };
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
@@ -1465,6 +1491,19 @@ class _SettingsOverlayState extends State<SettingsOverlay> {
                 letterSpacing: 0.6,
                 fontFamily: 'monospace',
               ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Container(width: 1, height: 14, color: Colors.white12),
+          const SizedBox(width: 10),
+          Icon(Icons.verified_user_outlined, color: statusColor, size: 13),
+          const SizedBox(width: 5),
+          Text(
+            statusLabel,
+            style: TextStyle(
+              color: statusColor,
+              fontSize: 9,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

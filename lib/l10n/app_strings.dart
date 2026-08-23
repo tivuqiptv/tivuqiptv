@@ -221,6 +221,24 @@ class AppStrings {
         tr: 'Telefonunuzla okutun',
       );
 
+  String get downloadPhoneApp => _value(
+        en: 'Download the TIVUQIPTV phone app',
+        de: 'TIVUQIPTV-App für das Smartphone herunterladen',
+        tr: 'TIVUQIPTV Telefon Uygulamasını İndirin',
+      );
+
+  String get phoneAppAddressPending => _value(
+        en: 'The app download page is being prepared',
+        de: 'Die App-Downloadseite wird vorbereitet',
+        tr: 'Uygulama indirme sayfası hazırlanıyor',
+      );
+
+  String get phoneAppCompanionDescription => _value(
+        en: 'Scan to download the companion app for your phone.',
+        de: 'Scannen Sie den Code, um die Begleit-App herunterzuladen.',
+        tr: 'Telefon uygulamasını indirmek için QR kodu okutun.',
+      );
+
   String get activationAddressMissing => _value(
         en: 'Activation address is not configured',
         de: 'Aktivierungsadresse ist nicht konfiguriert',

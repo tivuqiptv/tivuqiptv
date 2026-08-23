@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-22T21:34:21.252Z",
+  "generatedAt": "2026-08-22T23:25:49.717Z",
   "projectRoot": "/Users/umit/Desktop/yazilim/tivuqiptv/tivuqiptv program/tivuqiptv_app",
-  "scanDurationMs": 156,
+  "scanDurationMs": 158,
   "stats": {
-    "filesDiscovered": 350,
-    "filesIndexed": 290,
-    "filesIgnored": 93,
-    "totalSizeBytes": 2490923,
+    "filesDiscovered": 370,
+    "filesIndexed": 310,
+    "filesIgnored": 94,
+    "totalSizeBytes": 2608760,
     "languageBreakdown": {
       "plaintext": 17,
       "markdown": 17,
@@ -21,13 +21,14 @@
       "bat": 1,
       "example": 3,
       "jks": 1,
+      "javascript": 32,
       "plist": 7,
       "xcconfig": 10,
       "swift": 14,
       "python": 1,
       "env": 2,
       "shell": 5,
-      "json": 6,
+      "json": 8,
       "storyboard": 2,
       "c": 9,
       "m": 1,
@@ -41,12 +42,11 @@
       "cmake": 2,
       "xib": 1,
       "entitlements": 2,
+      "html": 7,
+      "css": 4,
       "lock": 1,
       "dockerfile": 1,
-      "javascript": 20,
       "sql": 11,
-      "html": 3,
-      "css": 2,
       "pem": 1,
       "der": 1,
       "gradle": 5,
@@ -55,9 +55,9 @@
     }
   },
   "freshness": {
-    "indexedAt": "2026-08-22T21:34:21.252Z",
-    "fileCount": 290,
-    "manifestFingerprint": "e4dd4852493d6723ce4af43b4d02fd6ddf9c0c56fa965a9fae33025b0e97cba3"
+    "indexedAt": "2026-08-22T23:25:49.717Z",
+    "fileCount": 310,
+    "manifestFingerprint": "69ab5b4f5432b16cb49394c71262f4dde83c2f13ddf57c887c87c26f10c9452d"
   },
   "files": [
     {
@@ -4029,6 +4029,33 @@
         "release"
       ],
       "symbolDetails": []
+    },
+    {
+      "relativePath": "api/index.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 640,
+      "modifiedAt": "2026-08-22T23:22:39.100Z",
+      "symbols": [
+        "handler"
+      ],
+      "imports": [
+        "../src/server.js"
+      ],
+      "keywords": [
+        "api",
+        "index",
+        "handler"
+      ],
+      "symbolDetails": [
+        {
+          "name": "handler",
+          "kind": "function",
+          "line": 3,
+          "signature": "export default async function handler(req, res) {"
+        }
+      ],
+      "skeleton": "L3: export default async function handler(req, res) {"
     },
     {
       "relativePath": "docs/AMAZON_RELEASE_CHECKLIST.md",
@@ -13136,6 +13163,287 @@
       "skeleton": "L5: class RunnerTests: XCTestCase {\nL7: func testExample() {"
     },
     {
+      "relativePath": "package.json",
+      "extension": ".json",
+      "language": "json",
+      "sizeBytes": 143,
+      "modifiedAt": "2026-08-22T23:16:30.707Z",
+      "symbols": [
+        "name",
+        "version",
+        "private",
+        "type",
+        "dependencies"
+      ],
+      "imports": [],
+      "keywords": [
+        "package",
+        "name",
+        "version",
+        "private",
+        "type",
+        "dependencies"
+      ],
+      "symbolDetails": [
+        {
+          "name": "name",
+          "kind": "json-key",
+          "line": 1
+        },
+        {
+          "name": "version",
+          "kind": "json-key",
+          "line": 1
+        },
+        {
+          "name": "private",
+          "kind": "json-key",
+          "line": 1
+        },
+        {
+          "name": "type",
+          "kind": "json-key",
+          "line": 1
+        },
+        {
+          "name": "dependencies",
+          "kind": "json-key",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "relativePath": "public/admin/app.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 10475,
+      "modifiedAt": "2026-08-22T23:22:30.592Z",
+      "symbols": [
+        "$",
+        "api",
+        "showLogin",
+        "showDashboard",
+        "escapeHtml",
+        "formatDate",
+        "formatMoney",
+        "statusInfo",
+        "renderDevices",
+        "renderPayments",
+        "renderAuditEvents",
+        "renderPrivacyRequests",
+        "switchView",
+        "message",
+        "loadDashboard"
+      ],
+      "imports": [],
+      "keywords": [
+        "public",
+        "admin",
+        "app",
+        "api",
+        "show",
+        "login",
+        "dashboard",
+        "escape",
+        "html",
+        "format",
+        "date",
+        "money",
+        "status",
+        "info",
+        "render",
+        "devices",
+        "payments",
+        "audit",
+        "events",
+        "privacy",
+        "requests",
+        "switch",
+        "view",
+        "message",
+        "load"
+      ],
+      "symbolDetails": [
+        {
+          "name": "$",
+          "kind": "const-function",
+          "line": 1,
+          "signature": "const $ = (selector) => document.querySelector(selector);"
+        },
+        {
+          "name": "api",
+          "kind": "function",
+          "line": 4,
+          "signature": "async function api(path, options = {}) {"
+        },
+        {
+          "name": "showLogin",
+          "kind": "function",
+          "line": 20,
+          "signature": "function showLogin() {"
+        },
+        {
+          "name": "showDashboard",
+          "kind": "function",
+          "line": 26,
+          "signature": "function showDashboard(user) {"
+        },
+        {
+          "name": "escapeHtml",
+          "kind": "function",
+          "line": 33,
+          "signature": "function escapeHtml(value) {"
+        },
+        {
+          "name": "formatDate",
+          "kind": "function",
+          "line": 39,
+          "signature": "function formatDate(value) {"
+        },
+        {
+          "name": "formatMoney",
+          "kind": "function",
+          "line": 46,
+          "signature": "function formatMoney(amountMinor, currency) {"
+        },
+        {
+          "name": "statusInfo",
+          "kind": "function",
+          "line": 53,
+          "signature": "function statusInfo(device) {"
+        },
+        {
+          "name": "renderDevices",
+          "kind": "function",
+          "line": 59,
+          "signature": "function renderDevices() {"
+        },
+        {
+          "name": "renderPayments",
+          "kind": "function",
+          "line": 81,
+          "signature": "function renderPayments() {"
+        },
+        {
+          "name": "renderAuditEvents",
+          "kind": "function",
+          "line": 93,
+          "signature": "function renderAuditEvents() {"
+        },
+        {
+          "name": "renderPrivacyRequests",
+          "kind": "function",
+          "line": 104,
+          "signature": "function renderPrivacyRequests() {"
+        },
+        {
+          "name": "switchView",
+          "kind": "function",
+          "line": 120,
+          "signature": "async function switchView(name) {"
+        },
+        {
+          "name": "message",
+          "kind": "function",
+          "line": 140,
+          "signature": "function message(text, error = false) {"
+        },
+        {
+          "name": "loadDashboard",
+          "kind": "function",
+          "line": 148,
+          "signature": "async function loadDashboard() {"
+        }
+      ],
+      "skeleton": "L20: function showLogin() {\nL26: function showDashboard(user) {\nL33: function escapeHtml(value) {\nL39: function formatDate(value) {\nL46: function formatMoney(amountMinor, currency) {\nL53: function statusInfo(device) {\nL59: function renderDevices() {\nL81: function renderPayments() {\nL93: function renderAuditEvents() {\nL104: function renderPrivacyRequests() {\nL140: function message(text, error = false) {"
+    },
+    {
+      "relativePath": "public/admin/index.html",
+      "extension": ".html",
+      "language": "html",
+      "sizeBytes": 7083,
+      "modifiedAt": "2026-08-22T23:22:30.590Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "admin",
+        "index"
+      ],
+      "symbolDetails": []
+    },
+    {
+      "relativePath": "public/admin/styles.css",
+      "extension": ".css",
+      "language": "css",
+      "sizeBytes": 6674,
+      "modifiedAt": "2026-08-22T23:22:30.591Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "admin",
+        "styles"
+      ],
+      "symbolDetails": []
+    },
+    {
+      "relativePath": "public/index.html",
+      "extension": ".html",
+      "language": "html",
+      "sizeBytes": 836,
+      "modifiedAt": "2026-08-22T23:22:30.587Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "index"
+      ],
+      "symbolDetails": []
+    },
+    {
+      "relativePath": "public/setup/setup.css",
+      "extension": ".css",
+      "language": "css",
+      "sizeBytes": 1949,
+      "modifiedAt": "2026-08-22T23:22:30.589Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "setup"
+      ],
+      "symbolDetails": []
+    },
+    {
+      "relativePath": "public/setup/setup.html",
+      "extension": ".html",
+      "language": "html",
+      "sizeBytes": 2209,
+      "modifiedAt": "2026-08-22T23:22:30.588Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "setup"
+      ],
+      "symbolDetails": []
+    },
+    {
+      "relativePath": "public/setup/setup.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 4982,
+      "modifiedAt": "2026-08-22T23:22:30.588Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "public",
+        "setup"
+      ],
+      "symbolDetails": []
+    },
+    {
       "relativePath": "pubspec.lock",
       "extension": ".lock",
       "language": "lock",
@@ -13425,11 +13733,12 @@
       "relativePath": "server/api/index.js",
       "extension": ".js",
       "language": "javascript",
-      "sizeBytes": 1244,
-      "modifiedAt": "2026-08-14T00:08:47.000Z",
+      "sizeBytes": 1354,
+      "modifiedAt": "2026-08-22T23:05:54.862Z",
       "symbols": [
         "nodeRequest",
-        "invokeHandler"
+        "invokeHandler",
+        "handler"
       ],
       "imports": [
         "../src/server.js"
@@ -13455,9 +13764,15 @@
           "kind": "function",
           "line": 13,
           "signature": "function invokeHandler(request, body) {"
+        },
+        {
+          "name": "handler",
+          "kind": "function",
+          "line": 38,
+          "signature": "export default async function handler(req, res) {"
         }
       ],
-      "skeleton": "L3: function nodeRequest(request, body) {\nL13: function invokeHandler(request, body) {"
+      "skeleton": "L3: function nodeRequest(request, body) {\nL13: function invokeHandler(request, body) {\nL38: export default async function handler(req, res) {"
     },
     {
       "relativePath": "server/compose.production.yaml",
@@ -14010,6 +14325,21 @@
       "symbolDetails": []
     },
     {
+      "relativePath": "server/public/index.html",
+      "extension": ".html",
+      "language": "html",
+      "sizeBytes": 836,
+      "modifiedAt": "2026-08-22T23:08:13.247Z",
+      "symbols": [],
+      "imports": [],
+      "keywords": [
+        "server",
+        "public",
+        "index"
+      ],
+      "symbolDetails": []
+    },
+    {
       "relativePath": "server/public/setup/setup.css",
       "extension": ".css",
       "language": "css",
@@ -14262,8 +14592,8 @@
       "relativePath": "server/src/config.js",
       "extension": ".js",
       "language": "javascript",
-      "sizeBytes": 3879,
-      "modifiedAt": "2026-08-14T19:40:46.000Z",
+      "sizeBytes": 5517,
+      "modifiedAt": "2026-08-22T23:24:37.955Z",
       "symbols": [
         "required",
         "positiveInteger",
@@ -14289,29 +14619,29 @@
         {
           "name": "required",
           "kind": "function",
-          "line": 3,
-          "signature": "function required(name) {"
+          "line": 44,
+          "signature": "function required(name, fallback = null) {"
         },
         {
           "name": "positiveInteger",
           "kind": "function",
-          "line": 9,
+          "line": 53,
           "signature": "function positiveInteger(name, fallback) {"
         },
         {
           "name": "signingPrivateKey",
           "kind": "function",
-          "line": 17,
+          "line": 61,
           "signature": "function signingPrivateKey() {"
         },
         {
           "name": "loadConfig",
           "kind": "function",
-          "line": 29,
+          "line": 79,
           "signature": "export function loadConfig() {"
         }
       ],
-      "skeleton": "L3: function required(name) {\nL9: function positiveInteger(name, fallback) {\nL17: function signingPrivateKey() {\nL29: export function loadConfig() {"
+      "skeleton": "L44: function required(name, fallback = null) {\nL53: function positiveInteger(name, fallback) {\nL61: function signingPrivateKey() {\nL79: export function loadConfig() {"
     },
     {
       "relativePath": "server/src/db.js",
@@ -15223,11 +15553,12 @@
       "relativePath": "server/vercel.json",
       "extension": ".json",
       "language": "json",
-      "sizeBytes": 1635,
-      "modifiedAt": "2026-08-14T00:08:47.000Z",
+      "sizeBytes": 1666,
+      "modifiedAt": "2026-08-22T23:06:01.592Z",
       "symbols": [
         "$schema",
         "framework",
+        "outputDirectory",
         "functions",
         "rewrites",
         "headers"
@@ -15238,6 +15569,8 @@
         "vercel",
         "schema",
         "framework",
+        "output",
+        "directory",
         "functions",
         "rewrites",
         "headers"
@@ -15250,6 +15583,11 @@
         },
         {
           "name": "framework",
+          "kind": "json-key",
+          "line": 1
+        },
+        {
+          "name": "outputDirectory",
           "kind": "json-key",
           "line": 1
         },
@@ -15269,6 +15607,830 @@
           "line": 1
         }
       ]
+    },
+    {
+      "relativePath": "src/admin_auth.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 1870,
+      "modifiedAt": "2026-08-22T23:22:30.582Z",
+      "symbols": [
+        "hashPassword",
+        "verifyPassword",
+        "newSessionToken",
+        "hashSessionToken",
+        "readCookie",
+        "sessionCookie",
+        "expiredSessionCookie"
+      ],
+      "imports": [
+        "node:util"
+      ],
+      "keywords": [
+        "src",
+        "admin",
+        "auth",
+        "hash",
+        "password",
+        "verify",
+        "new",
+        "session",
+        "token",
+        "read",
+        "cookie",
+        "expired"
+      ],
+      "symbolDetails": [
+        {
+          "name": "hashPassword",
+          "kind": "function",
+          "line": 11,
+          "signature": "export async function hashPassword(password) {"
+        },
+        {
+          "name": "verifyPassword",
+          "kind": "function",
+          "line": 17,
+          "signature": "export async function verifyPassword(password, encoded) {"
+        },
+        {
+          "name": "newSessionToken",
+          "kind": "function",
+          "line": 25,
+          "signature": "export function newSessionToken() {"
+        },
+        {
+          "name": "hashSessionToken",
+          "kind": "function",
+          "line": 29,
+          "signature": "export function hashSessionToken(token) {"
+        },
+        {
+          "name": "readCookie",
+          "kind": "function",
+          "line": 33,
+          "signature": "export function readCookie(request, name) {"
+        },
+        {
+          "name": "sessionCookie",
+          "kind": "function",
+          "line": 45,
+          "signature": "export function sessionCookie(token, maxAge, secure) {"
+        },
+        {
+          "name": "expiredSessionCookie",
+          "kind": "function",
+          "line": 56,
+          "signature": "export function expiredSessionCookie(secure) {"
+        }
+      ],
+      "skeleton": "L11: export async function hashPassword(password) {\nL17: export async function verifyPassword(password, encoded) {\nL25: export function newSessionToken() {\nL29: export function hashSessionToken(token) {\nL33: export function readCookie(request, name) {\nL45: export function sessionCookie(token, maxAge, secure) {\nL56: export function expiredSessionCookie(secure) {"
+    },
+    {
+      "relativePath": "src/config.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 5517,
+      "modifiedAt": "2026-08-22T23:24:26.394Z",
+      "symbols": [
+        "required",
+        "positiveInteger",
+        "signingPrivateKey",
+        "loadConfig"
+      ],
+      "imports": [
+        "node:fs"
+      ],
+      "keywords": [
+        "src",
+        "config",
+        "required",
+        "positive",
+        "integer",
+        "signing",
+        "private",
+        "key",
+        "load"
+      ],
+      "symbolDetails": [
+        {
+          "name": "required",
+          "kind": "function",
+          "line": 44,
+          "signature": "function required(name, fallback = null) {"
+        },
+        {
+          "name": "positiveInteger",
+          "kind": "function",
+          "line": 53,
+          "signature": "function positiveInteger(name, fallback) {"
+        },
+        {
+          "name": "signingPrivateKey",
+          "kind": "function",
+          "line": 61,
+          "signature": "function signingPrivateKey() {"
+        },
+        {
+          "name": "loadConfig",
+          "kind": "function",
+          "line": 79,
+          "signature": "export function loadConfig() {"
+        }
+      ],
+      "skeleton": "L44: function required(name, fallback = null) {\nL53: function positiveInteger(name, fallback) {\nL61: function signingPrivateKey() {\nL79: export function loadConfig() {"
+    },
+    {
+      "relativePath": "src/db.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 730,
+      "modifiedAt": "2026-08-22T23:22:30.582Z",
+      "symbols": [
+        "createDatabase"
+      ],
+      "imports": [
+        "pg"
+      ],
+      "keywords": [
+        "src",
+        "db",
+        "create",
+        "database"
+      ],
+      "symbolDetails": [
+        {
+          "name": "createDatabase",
+          "kind": "function",
+          "line": 5,
+          "signature": "export function createDatabase(connectionString, { max = 10 } = {}) {"
+        }
+      ],
+      "skeleton": "L5: export function createDatabase(connectionString, { max = 10 } = {}) {"
+    },
+    {
+      "relativePath": "src/license_crypto.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 1642,
+      "modifiedAt": "2026-08-22T23:22:30.582Z",
+      "symbols": [
+        "base64UrlEncode",
+        "base64UrlDecode",
+        "deviceCodeForPublicKey",
+        "validateDeviceIdentity",
+        "newChallenge",
+        "verifyChallengeSignature",
+        "issueLicenseToken"
+      ],
+      "imports": [],
+      "keywords": [
+        "src",
+        "license",
+        "crypto",
+        "base64",
+        "url",
+        "encode",
+        "decode",
+        "device",
+        "code",
+        "for",
+        "public",
+        "key",
+        "validate",
+        "identity",
+        "new",
+        "challenge",
+        "verify",
+        "signature",
+        "issue",
+        "token"
+      ],
+      "symbolDetails": [
+        {
+          "name": "base64UrlEncode",
+          "kind": "function",
+          "line": 10,
+          "signature": "export function base64UrlEncode(value) {"
+        },
+        {
+          "name": "base64UrlDecode",
+          "kind": "function",
+          "line": 14,
+          "signature": "export function base64UrlDecode(value) {"
+        },
+        {
+          "name": "deviceCodeForPublicKey",
+          "kind": "function",
+          "line": 18,
+          "signature": "export function deviceCodeForPublicKey(publicKeyDer) {"
+        },
+        {
+          "name": "validateDeviceIdentity",
+          "kind": "function",
+          "line": 24,
+          "signature": "export function validateDeviceIdentity(deviceCode, publicKeyText) {"
+        },
+        {
+          "name": "newChallenge",
+          "kind": "function",
+          "line": 30,
+          "signature": "export function newChallenge() {"
+        },
+        {
+          "name": "verifyChallengeSignature",
+          "kind": "function",
+          "line": 34,
+          "signature": "export function verifyChallengeSignature(publicKeyText, nonce, signatureText) {"
+        },
+        {
+          "name": "issueLicenseToken",
+          "kind": "function",
+          "line": 48,
+          "signature": "export function issueLicenseToken(privateKeyPem, claims) {"
+        }
+      ],
+      "skeleton": "L10: export function base64UrlEncode(value) {\nL14: export function base64UrlDecode(value) {\nL18: export function deviceCodeForPublicKey(publicKeyDer) {\nL24: export function validateDeviceIdentity(deviceCode, publicKeyText) {\nL30: export function newChallenge() {\nL34: export function verifyChallengeSignature(publicKeyText, nonce, signatureText) {\nL48: export function issueLicenseToken(privateKeyPem, claims) {"
+    },
+    {
+      "relativePath": "src/local.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 635,
+      "modifiedAt": "2026-08-22T23:22:30.580Z",
+      "symbols": [
+        "shutdown"
+      ],
+      "imports": [
+        "node:http",
+        "./server.js"
+      ],
+      "keywords": [
+        "src",
+        "local",
+        "shutdown"
+      ],
+      "symbolDetails": [
+        {
+          "name": "shutdown",
+          "kind": "function",
+          "line": 16,
+          "signature": "async function shutdown() {"
+        }
+      ]
+    },
+    {
+      "relativePath": "src/payment_webhook.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 1782,
+      "modifiedAt": "2026-08-22T23:22:30.580Z",
+      "symbols": [
+        "signWebhook",
+        "verifyWebhookSignature",
+        "normalizePaymentEvent",
+        "clean"
+      ],
+      "imports": [
+        "node:crypto"
+      ],
+      "keywords": [
+        "src",
+        "payment",
+        "webhook",
+        "sign",
+        "verify",
+        "signature",
+        "normalize",
+        "event",
+        "clean"
+      ],
+      "symbolDetails": [
+        {
+          "name": "signWebhook",
+          "kind": "function",
+          "line": 3,
+          "signature": "export function signWebhook(secret, timestamp, rawBody) {"
+        },
+        {
+          "name": "verifyWebhookSignature",
+          "kind": "function",
+          "line": 9,
+          "signature": "export function verifyWebhookSignature({ secret, timestamp, rawBody, signature, now = Date.now() }) "
+        },
+        {
+          "name": "normalizePaymentEvent",
+          "kind": "function",
+          "line": 19,
+          "signature": "export function normalizePaymentEvent(value) {"
+        },
+        {
+          "name": "clean",
+          "kind": "function",
+          "line": 34,
+          "signature": "function clean(value, max) {"
+        }
+      ],
+      "skeleton": "L3: export function signWebhook(secret, timestamp, rawBody) {\nL9: export function verifyWebhookSignature({ secret, timestamp, rawBody, signature, now = Date.now() }) {\nL19: export function normalizePaymentEvent(value) {\nL34: function clean(value, max) {"
+    },
+    {
+      "relativePath": "src/privacy.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 21094,
+      "modifiedAt": "2026-08-22T23:22:30.583Z",
+      "symbols": [
+        "escapeHtml",
+        "resolvePrivacyLanguage",
+        "renderPrivacyPage",
+        "section",
+        "list",
+        "html",
+        "privacyDisclosure"
+      ],
+      "imports": [],
+      "keywords": [
+        "src",
+        "privacy",
+        "escape",
+        "html",
+        "resolve",
+        "language",
+        "render",
+        "page",
+        "section",
+        "list",
+        "disclosure"
+      ],
+      "symbolDetails": [
+        {
+          "name": "escapeHtml",
+          "kind": "function",
+          "line": 96,
+          "signature": "function escapeHtml(value) {"
+        },
+        {
+          "name": "resolvePrivacyLanguage",
+          "kind": "function",
+          "line": 102,
+          "signature": "export function resolvePrivacyLanguage(requested, acceptLanguage = '') {"
+        },
+        {
+          "name": "renderPrivacyPage",
+          "kind": "function",
+          "line": 107,
+          "signature": "export function renderPrivacyPage({ language, controllerName, contactEmail, effectiveDate, retention"
+        },
+        {
+          "name": "section",
+          "kind": "const-function",
+          "line": 109,
+          "signature": "const section = (title, body) => `<section><h2>${escapeHtml(title)}</h2>${body}</section>`;"
+        },
+        {
+          "name": "list",
+          "kind": "const-function",
+          "line": 110,
+          "signature": "const list = (items) => `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;"
+        },
+        {
+          "name": "html",
+          "kind": "type",
+          "line": 112,
+          "signature": "return `<!doctype html><html lang=\"${language}\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" co"
+        },
+        {
+          "name": "privacyDisclosure",
+          "kind": "function",
+          "line": 115,
+          "signature": "export function privacyDisclosure(config) {"
+        }
+      ],
+      "skeleton": "L96: function escapeHtml(value) {\nL102: export function resolvePrivacyLanguage(requested, acceptLanguage = '') {\nL107: export function renderPrivacyPage({ language, controllerName, contactEmail, effectiveDate, retention }) {\nL115: export function privacyDisclosure(config) {"
+    },
+    {
+      "relativePath": "src/remote_profile_crypto.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 1384,
+      "modifiedAt": "2026-08-22T23:22:30.584Z",
+      "symbols": [
+        "newPairingCode",
+        "newPullToken",
+        "secretHash",
+        "encryptionKey",
+        "encryptProfile",
+        "decryptProfile"
+      ],
+      "imports": [
+        "node:crypto"
+      ],
+      "keywords": [
+        "src",
+        "remote",
+        "profile",
+        "crypto",
+        "new",
+        "pairing",
+        "code",
+        "pull",
+        "token",
+        "secret",
+        "hash",
+        "encryption",
+        "key",
+        "encrypt",
+        "decrypt"
+      ],
+      "symbolDetails": [
+        {
+          "name": "newPairingCode",
+          "kind": "function",
+          "line": 3,
+          "signature": "export function newPairingCode() {"
+        },
+        {
+          "name": "newPullToken",
+          "kind": "function",
+          "line": 7,
+          "signature": "export function newPullToken() {"
+        },
+        {
+          "name": "secretHash",
+          "kind": "function",
+          "line": 11,
+          "signature": "export function secretHash(value, context = '') {"
+        },
+        {
+          "name": "encryptionKey",
+          "kind": "function",
+          "line": 15,
+          "signature": "export function encryptionKey(value) {"
+        },
+        {
+          "name": "encryptProfile",
+          "kind": "function",
+          "line": 19,
+          "signature": "export function encryptProfile(key, profile) {"
+        },
+        {
+          "name": "decryptProfile",
+          "kind": "function",
+          "line": 30,
+          "signature": "export function decryptProfile(key, value) {"
+        }
+      ],
+      "skeleton": "L3: export function newPairingCode() {\nL7: export function newPullToken() {\nL11: export function secretHash(value, context = '') {\nL15: export function encryptionKey(value) {\nL19: export function encryptProfile(key, profile) {\nL30: export function decryptProfile(key, value) {"
+    },
+    {
+      "relativePath": "src/server.js",
+      "extension": ".js",
+      "language": "javascript",
+      "sizeBytes": 44412,
+      "modifiedAt": "2026-08-22T23:22:30.581Z",
+      "symbols": [
+        "json",
+        "applySecurityHeaders",
+        "readJson",
+        "text",
+        "validPlaylistUrl",
+        "remoteProfileKey",
+        "requireAdmin",
+        "requestIp",
+        "rateLimitSubject",
+        "rateLimitAllowed",
+        "recordRateLimitFailure",
+        "clearRateLimit",
+        "requireTrustedAdminOrigin",
+        "createChallenge",
+        "sha256",
+        "consumeVerifiedDeviceChallenge",
+        "requestPrivacyDeletion",
+        "listPrivacyDeletionRequests",
+        "completePrivacyDeletionRequest",
+        "createRemoteProfilePairing",
+        "submitRemoteProfile",
+        "pullRemoteProfile",
+        "verifyLicense",
+        "activateLicense",
+        "revokeLicense",
+        "listDevices",
+        "dashboard",
+        "listAuditEvents",
+        "listPayments",
+        "createAdminSession",
+        "currentAdminSession",
+        "deleteAdminSession",
+        "serveAdminAsset",
+        "servePrivacyPage",
+        "ensureBootstrapAdmin",
+        "initializeServer",
+        "requestHandler",
+        "closeServerResources"
+      ],
+      "imports": [
+        "node:crypto",
+        "node:fs/promises",
+        "node:path",
+        "node:url",
+        "./config.js",
+        "./db.js"
+      ],
+      "keywords": [
+        "src",
+        "server",
+        "json",
+        "apply",
+        "security",
+        "headers",
+        "read",
+        "text",
+        "valid",
+        "playlist",
+        "url",
+        "remote",
+        "profile",
+        "key",
+        "require",
+        "admin",
+        "request",
+        "ip",
+        "rate",
+        "limit",
+        "subject",
+        "allowed",
+        "record",
+        "failure",
+        "clear",
+        "trusted",
+        "origin",
+        "create",
+        "challenge",
+        "sha256",
+        "consume",
+        "verified",
+        "device",
+        "privacy",
+        "deletion",
+        "list",
+        "requests",
+        "complete",
+        "pairing",
+        "submit",
+        "pull",
+        "verify",
+        "license",
+        "activate",
+        "revoke",
+        "devices",
+        "dashboard",
+        "audit",
+        "events",
+        "payments",
+        "session",
+        "current",
+        "delete",
+        "serve",
+        "asset",
+        "page",
+        "ensure",
+        "bootstrap",
+        "initialize",
+        "handler",
+        "close",
+        "resources"
+      ],
+      "symbolDetails": [
+        {
+          "name": "json",
+          "kind": "function",
+          "line": 41,
+          "signature": "function json(response, statusCode, payload, extraHeaders = {}) {"
+        },
+        {
+          "name": "applySecurityHeaders",
+          "kind": "function",
+          "line": 51,
+          "signature": "function applySecurityHeaders(response, requestId) {"
+        },
+        {
+          "name": "readJson",
+          "kind": "function",
+          "line": 61,
+          "signature": "async function readJson(request) {"
+        },
+        {
+          "name": "text",
+          "kind": "function",
+          "line": 93,
+          "signature": "function text(value, max = 160) {"
+        },
+        {
+          "name": "validPlaylistUrl",
+          "kind": "function",
+          "line": 99,
+          "signature": "function validPlaylistUrl(value) {"
+        },
+        {
+          "name": "remoteProfileKey",
+          "kind": "function",
+          "line": 112,
+          "signature": "function remoteProfileKey() {"
+        },
+        {
+          "name": "requireAdmin",
+          "kind": "function",
+          "line": 120,
+          "signature": "async function requireAdmin(request) {"
+        },
+        {
+          "name": "requestIp",
+          "kind": "function",
+          "line": 145,
+          "signature": "function requestIp(request) {"
+        },
+        {
+          "name": "rateLimitSubject",
+          "kind": "function",
+          "line": 154,
+          "signature": "function rateLimitSubject(value) {"
+        },
+        {
+          "name": "rateLimitAllowed",
+          "kind": "function",
+          "line": 158,
+          "signature": "async function rateLimitAllowed(bucket, subject, maximum, windowSeconds) {"
+        },
+        {
+          "name": "recordRateLimitFailure",
+          "kind": "function",
+          "line": 169,
+          "signature": "async function recordRateLimitFailure(bucket, subject, windowSeconds) {"
+        },
+        {
+          "name": "clearRateLimit",
+          "kind": "function",
+          "line": 189,
+          "signature": "async function clearRateLimit(bucket, subject) {"
+        },
+        {
+          "name": "requireTrustedAdminOrigin",
+          "kind": "function",
+          "line": 196,
+          "signature": "function requireTrustedAdminOrigin(request) {"
+        },
+        {
+          "name": "createChallenge",
+          "kind": "function",
+          "line": 205,
+          "signature": "async function createChallenge(request, response) {"
+        },
+        {
+          "name": "sha256",
+          "kind": "function",
+          "line": 317,
+          "signature": "function sha256(value) {"
+        },
+        {
+          "name": "consumeVerifiedDeviceChallenge",
+          "kind": "function",
+          "line": 321,
+          "signature": "async function consumeVerifiedDeviceChallenge(client, body) {"
+        },
+        {
+          "name": "requestPrivacyDeletion",
+          "kind": "function",
+          "line": 352,
+          "signature": "async function requestPrivacyDeletion(request, response) {"
+        },
+        {
+          "name": "listPrivacyDeletionRequests",
+          "kind": "function",
+          "line": 380,
+          "signature": "async function listPrivacyDeletionRequests(request, response) {"
+        },
+        {
+          "name": "completePrivacyDeletionRequest",
+          "kind": "function",
+          "line": 397,
+          "signature": "async function completePrivacyDeletionRequest(request, response, requestId) {"
+        },
+        {
+          "name": "createRemoteProfilePairing",
+          "kind": "function",
+          "line": 485,
+          "signature": "async function createRemoteProfilePairing(request, response) {"
+        },
+        {
+          "name": "submitRemoteProfile",
+          "kind": "function",
+          "line": 547,
+          "signature": "async function submitRemoteProfile(request, response) {"
+        },
+        {
+          "name": "pullRemoteProfile",
+          "kind": "function",
+          "line": 604,
+          "signature": "async function pullRemoteProfile(request, response, pairingId) {"
+        },
+        {
+          "name": "verifyLicense",
+          "kind": "function",
+          "line": 632,
+          "signature": "async function verifyLicense(request, response) {"
+        },
+        {
+          "name": "activateLicense",
+          "kind": "function",
+          "line": 749,
+          "signature": "async function activateLicense(request, response) {"
+        },
+        {
+          "name": "revokeLicense",
+          "kind": "function",
+          "line": 805,
+          "signature": "async function revokeLicense(request, response, licenseId) {"
+        },
+        {
+          "name": "listDevices",
+          "kind": "function",
+          "line": 827,
+          "signature": "async function listDevices(request, response) {"
+        },
+        {
+          "name": "dashboard",
+          "kind": "function",
+          "line": 845,
+          "signature": "async function dashboard(request, response) {"
+        },
+        {
+          "name": "listAuditEvents",
+          "kind": "function",
+          "line": 859,
+          "signature": "async function listAuditEvents(request, response) {"
+        },
+        {
+          "name": "listPayments",
+          "kind": "function",
+          "line": 871,
+          "signature": "async function listPayments(request, response) {"
+        },
+        {
+          "name": "createAdminSession",
+          "kind": "function",
+          "line": 886,
+          "signature": "async function createAdminSession(request, response) {"
+        },
+        {
+          "name": "currentAdminSession",
+          "kind": "function",
+          "line": 953,
+          "signature": "async function currentAdminSession(request, response) {"
+        },
+        {
+          "name": "deleteAdminSession",
+          "kind": "function",
+          "line": 960,
+          "signature": "async function deleteAdminSession(request, response) {"
+        },
+        {
+          "name": "serveAdminAsset",
+          "kind": "function",
+          "line": 986,
+          "signature": "async function serveAdminAsset(response, pathname) {"
+        },
+        {
+          "name": "servePrivacyPage",
+          "kind": "function",
+          "line": 1013,
+          "signature": "function servePrivacyPage(request, response, url) {"
+        },
+        {
+          "name": "ensureBootstrapAdmin",
+          "kind": "function",
+          "line": 1040,
+          "signature": "async function ensureBootstrapAdmin() {"
+        },
+        {
+          "name": "initializeServer",
+          "kind": "function",
+          "line": 1055,
+          "signature": "export function initializeServer() {"
+        },
+        {
+          "name": "requestHandler",
+          "kind": "function",
+          "line": 1063,
+          "signature": "export async function requestHandler(request, response) {"
+        },
+        {
+          "name": "closeServerResources",
+          "kind": "function",
+          "line": 1147,
+          "signature": "export async function closeServerResources() {"
+        }
+      ],
+      "skeleton": "L41: function json(response, statusCode, payload, extraHeaders = {}) {\nL51: function applySecurityHeaders(response, requestId) {\nL93: function text(value, max = 160) {\nL99: function validPlaylistUrl(value) {\nL112: function remoteProfileKey() {\nL145: function requestIp(request) {\nL154: function rateLimitSubject(value) {\nL196: function requireTrustedAdminOrigin(request) {\nL317: function sha256(value) {\nL1013: function servePrivacyPage(request, response, url) {\nL1055: export function initializeServer() {\nL1063: export async function requestHandler(request, response) {\nL1147: export async function closeServerResources() {"
     },
     {
       "relativePath": "test/app_strings_test.dart",
@@ -19199,6 +20361,42 @@
         }
       ],
       "skeleton": "L16: class _TestHostVideoPlayerApiCodec extends StandardMessageCodec {\nL69: abstract class TestHostVideoPlayerApi {"
+    },
+    {
+      "relativePath": "vercel.json",
+      "extension": ".json",
+      "language": "json",
+      "sizeBytes": 1165,
+      "modifiedAt": "2026-08-22T23:22:34.247Z",
+      "symbols": [
+        "$schema",
+        "rewrites",
+        "headers"
+      ],
+      "imports": [],
+      "keywords": [
+        "vercel",
+        "schema",
+        "rewrites",
+        "headers"
+      ],
+      "symbolDetails": [
+        {
+          "name": "$schema",
+          "kind": "json-key",
+          "line": 1
+        },
+        {
+          "name": "rewrites",
+          "kind": "json-key",
+          "line": 1
+        },
+        {
+          "name": "headers",
+          "kind": "json-key",
+          "line": 1
+        }
+      ]
     },
     {
       "relativePath": "web/index.html",

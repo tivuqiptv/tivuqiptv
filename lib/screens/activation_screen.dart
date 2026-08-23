@@ -4,7 +4,6 @@ import 'package:qr_flutter/qr_flutter.dart';
 import '../services/license_service.dart';
 import '../main.dart'; // or wherever we can restart the app or reload
 import '../l10n/app_strings.dart';
-import '../config/distribution_config.dart';
 
 class ActivationScreen extends StatefulWidget {
   const ActivationScreen({super.key});
@@ -44,7 +43,7 @@ class _ActivationScreenState extends State<ActivationScreen> {
   Widget build(BuildContext context) {
     final strings = AppStrings.of(context);
     final deviceId = LicenseService.deviceId;
-    final activationUri = LicenseService.activationUri;
+    final downloadUri = LicenseService.phoneAppDownloadUri;
 
     return Scaffold(
       backgroundColor: const Color(0xFF0D0B14),
@@ -160,9 +159,7 @@ class _ActivationScreenState extends State<ActivationScreen> {
                         ),
                         const SizedBox(height: 32),
                         Text(
-                          DistributionConfig.isAmazonAppstore
-                              ? strings.amazonDeviceCodeExplanation
-                              : strings.deviceCodeExplanation,
+                          strings.deviceCodeExplanation,
                           style: GoogleFonts.inter(
                             color: Colors.white60,
                             fontSize: 14,
@@ -220,74 +217,50 @@ class _ActivationScreenState extends State<ActivationScreen> {
                   // Sağ Taraf: QR Kod
                   Expanded(
                     flex: 2,
-                    child: DistributionConfig.isAmazonAppstore
-                        ? Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.shopping_bag_rounded,
-                                color: Color(0xFFAAA4FF),
-                                size: 104,
-                              ),
-                              const SizedBox(height: 24),
-                              Text(
-                                strings.amazonPurchaseTitle,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.inter(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 12),
-                              Text(
-                                strings.amazonProcessesPurchases,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.inter(
-                                  color: Colors.white54,
-                                  fontSize: 13,
-                                  height: 1.45,
-                                ),
-                              ),
-                            ],
-                          )
-                        : Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(24),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(24),
-                                ),
-                                child: QrImageView(
-                                  data: activationUri?.toString() ??
-                                      'tivuq://activate?deviceId=$deviceId',
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: downloadUri == null
+                              ? const SizedBox(
+                                  width: 200,
+                                  height: 200,
+                                  child: Icon(Icons.qr_code_2_rounded,
+                                      size: 96, color: Colors.black26),
+                                )
+                              : QrImageView(
+                                  data: downloadUri.toString(),
                                   version: QrVersions.auto,
                                   size: 200.0,
                                   backgroundColor: Colors.white,
                                 ),
-                              ),
-                              const SizedBox(height: 24),
-                              Text(
-                                strings.scanWithPhone,
-                                style: GoogleFonts.inter(
-                                  color: Colors.white54,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                activationUri?.host ??
-                                    strings.activationAddressMissing,
-                                style: GoogleFonts.inter(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          strings.downloadPhoneApp,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          downloadUri?.host ?? strings.phoneAppAddressPending,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            color: Colors.white54,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
