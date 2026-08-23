@@ -56,6 +56,47 @@ function statusInfo(device) {
   return ['Lisanssız', 'none'];
 }
 
+function formatTrial(device) {
+  if (device.license_status === 'active') {
+    return `<div class="trial-cell">
+      <span class="trial-tag trial-lifetime">Ömür Boyu</span>
+    </div>`;
+  }
+  if (!device.trial_started_at) {
+    return `<span class="muted">—</span>`;
+  }
+  const startDate = new Intl.DateTimeFormat('tr-TR', {
+    day: '2-digit', month: '2-digit', year: 'numeric'
+  }).format(new Date(device.trial_started_at));
+
+  if (!device.trial_expires_at) {
+    return `<span class="trial-date">${escapeHtml(startDate)}</span>`;
+  }
+
+  const now = Date.now();
+  const expire = new Date(device.trial_expires_at).getTime();
+  const diffMs = expire - now;
+  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+  let daysText = '';
+  let tagClass = 'trial-active';
+  if (diffDays > 0) {
+    daysText = `(${diffDays} gün kaldı)`;
+    tagClass = diffDays <= 3 ? 'trial-expiring' : 'trial-active';
+  } else if (diffDays === 0) {
+    daysText = `(Bugün bitiyor)`;
+    tagClass = 'trial-expiring';
+  } else {
+    daysText = `(Süresi doldu)`;
+    tagClass = 'trial-expired';
+  }
+
+  return `<div class="trial-cell">
+    <span class="trial-date">${escapeHtml(startDate)}</span>
+    <span class="trial-tag ${tagClass}">${escapeHtml(daysText)}</span>
+  </div>`;
+}
+
 function renderDevices() {
   const query = $('#device-search').value.trim().toLocaleLowerCase('tr-TR');
   const devices = state.devices.filter((device) => [
@@ -69,6 +110,7 @@ function renderDevices() {
       <td><span class="device-code">${escapeHtml(device.device_code)}</span>
         <span class="subline">${escapeHtml(device.model || device.platform || 'Android TV')}</span></td>
       <td>${escapeHtml(device.customer_email || '—')}</td>
+      <td>${formatTrial(device)}</td>
       <td>${escapeHtml(formatDate(device.last_seen_at))}</td>
       <td><span class="badge ${className}">${escapeHtml(label)}</span></td>
       <td><button class="row-action ${active ? 'danger' : ''}" data-action="${active ? 'revoke' : 'activate'}"

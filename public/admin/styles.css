@@ -68,6 +68,13 @@ td { padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: midd
 .badge.active { color: var(--green); background: rgba(54,211,153,.11); }
 .badge.inactive { color: var(--red); background: rgba(251,113,133,.11); }
 .badge.none { color: var(--muted); background: rgba(159,152,186,.11); }
+.trial-cell { display: flex; flex-direction: column; gap: 3px; }
+.trial-date { font-weight: 600; color: #e2e8f0; font-size: 12px; }
+.trial-tag { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 6px; padding: 2px 6px; width: fit-content; }
+.trial-active { color: #38bdf8; background: rgba(56,189,248,.12); }
+.trial-expiring { color: #fbbf24; background: rgba(251,191,36,.12); }
+.trial-expired { color: #f87171; background: rgba(248,113,113,.12); }
+.trial-lifetime { color: #4ade80; background: rgba(74,222,128,.12); }
 .row-action { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--panel-2); color: var(--text); white-space: nowrap; }
 .row-action.danger { color: var(--red); }
 .empty-state { padding: 60px 20px; text-align: center; color: var(--muted); }
