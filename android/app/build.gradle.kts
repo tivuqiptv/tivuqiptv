@@ -11,6 +11,7 @@ plugins {
 val tivuqKeystoreProperties = Properties()
 val tivuqKeystorePropertiesFile = rootProject.file("key.properties")
 val hasTivuqReleaseKey = tivuqKeystorePropertiesFile.exists()
+val tivuqTargetAbi = providers.gradleProperty("tivuqTargetAbi").orNull
 if (hasTivuqReleaseKey) {
     FileInputStream(tivuqKeystorePropertiesFile).use {
         tivuqKeystoreProperties.load(it)
@@ -37,6 +38,11 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        if (!tivuqTargetAbi.isNullOrBlank()) {
+            ndk {
+                abiFilters += tivuqTargetAbi
+            }
+        }
     }
 
     signingConfigs {

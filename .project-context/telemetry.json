@@ -1,7 +1,7 @@
 {
-  "totalInvocations": 1,
-  "totalRepoTokensSaved": 622385,
-  "estimatedCostSavedUsd": 1.87,
+  "totalInvocations": 3,
+  "totalRepoTokensSaved": 1930135,
+  "estimatedCostSavedUsd": 5.79,
   "averageSavingsPercentage": 99.9,
   "history": [
     {
@@ -10,6 +10,22 @@
       "repoTokensIfFullScan": 622731,
       "contextTokensInjected": 346,
       "tokensSaved": 622385,
+      "savingsPercentage": 99.9
+    },
+    {
+      "timestamp": "2026-08-23T02:06:40.168Z",
+      "task": "Admin panelinde müşteri ile son bağlantı arasına deneme başlangıç tarihi ve kalan gün sayısını eklem",
+      "repoTokensIfFullScan": 653784,
+      "contextTokensInjected": 379,
+      "tokensSaved": 653405,
+      "savingsPercentage": 99.9
+    },
+    {
+      "timestamp": "2026-08-23T02:14:42.520Z",
+      "task": "Admin panelinde kartları 5'e çıkarma, filtreleme butonları yapma ve cihazları en erken biten denemey",
+      "repoTokensIfFullScan": 654725,
+      "contextTokensInjected": 380,
+      "tokensSaved": 654345,
       "savingsPercentage": 99.9
     }
   ]

@@ -55,10 +55,11 @@
           </header>
 
           <section class="metric-grid" aria-label="Lisans özeti">
-            <article><span>Toplam cihaz</span><strong id="total-devices">—</strong></article>
-            <article><span>Aktif lisans</span><strong id="active-licenses">—</strong></article>
-            <article><span>Pasif lisans</span><strong id="inactive-licenses">—</strong></article>
-            <article><span>Son 24 saat</span><strong id="recent-devices">—</strong></article>
+            <article class="metric-card active" data-filter="all"><span>Toplam cihaz</span><strong id="total-devices">—</strong></article>
+            <article class="metric-card" data-filter="trial"><span>Deneme sürecinde</span><strong id="trial-devices">—</strong></article>
+            <article class="metric-card" data-filter="active"><span>Aktif lisans</span><strong id="active-licenses">—</strong></article>
+            <article class="metric-card" data-filter="inactive"><span>Pasif lisans</span><strong id="inactive-licenses">—</strong></article>
+            <article class="metric-card" data-filter="recent"><span>Son 24 saat</span><strong id="recent-devices">—</strong></article>
           </section>
 
           <section class="table-card">

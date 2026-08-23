@@ -1,5 +1,12 @@
 const $ = (selector) => document.querySelector(selector);
-const state = { devices: [], payments: [], privacyRequests: [], auditEvents: [], user: null };
+const state = {
+  devices: [],
+  payments: [],
+  privacyRequests: [],
+  auditEvents: [],
+  user: null,
+  currentFilter: 'all',
+};
 
 async function api(path, options = {}) {
   const response = await fetch(path, {
@@ -99,9 +106,56 @@ function formatTrial(device) {
 
 function renderDevices() {
   const query = $('#device-search').value.trim().toLocaleLowerCase('tr-TR');
-  const devices = state.devices.filter((device) => [
+  const now = Date.now();
+  const oneDayAgo = now - 24 * 3600 * 1000;
+
+  // 1. Text search filter
+  let devices = state.devices.filter((device) => [
     device.device_code, device.model, device.customer_email,
   ].some((value) => String(value ?? '').toLocaleLowerCase('tr-TR').includes(query)));
+
+  // 2. Metric card filter
+  if (state.currentFilter === 'trial') {
+    devices = devices.filter((device) => {
+      if (device.license_status === 'active') return false;
+      const expire = device.trial_expires_at ? new Date(device.trial_expires_at).getTime() : 0;
+      return expire > now;
+    });
+  } else if (state.currentFilter === 'active') {
+    devices = devices.filter((device) => device.license_status === 'active');
+  } else if (state.currentFilter === 'inactive') {
+    devices = devices.filter((device) => {
+      if (device.license_status === 'active') return false;
+      const expire = device.trial_expires_at ? new Date(device.trial_expires_at).getTime() : 0;
+      return (expire > 0 && expire <= now) || (device.license_status && device.license_status !== 'active');
+    });
+  } else if (state.currentFilter === 'recent') {
+    devices = devices.filter((device) => {
+      const seen = device.last_seen_at ? new Date(device.last_seen_at).getTime() : 0;
+      return seen >= oneDayAgo;
+    });
+  }
+
+  // 3. Sorting: "siralama kalan gune gore siralanmali en erken biten en ustte olmali."
+  devices.sort((a, b) => {
+    function getSortKey(d) {
+      if (d.license_status === 'active') return [3, 0];
+      const expire = d.trial_expires_at ? new Date(d.trial_expires_at).getTime() : 0;
+      if (expire > 0) {
+        if (expire >= now) {
+          return [1, expire]; // Active trials: earliest expiring first
+        }
+        return [0, expire]; // Expired trials
+      }
+      return [2, -(d.last_seen_at ? new Date(d.last_seen_at).getTime() : 0)];
+    }
+
+    const [priA, valA] = getSortKey(a);
+    const [priB, valB] = getSortKey(b);
+    if (priA !== priB) return priA - priB;
+    return valA - valB;
+  });
+
   $('#empty-state').hidden = devices.length !== 0;
   $('#device-rows').innerHTML = devices.map((device) => {
     const [label, className] = statusInfo(device);
@@ -193,10 +247,11 @@ async function loadDashboard() {
     const [dashboard, devices] = await Promise.all([
       api('/v1/admin/dashboard'), api('/v1/admin/devices'),
     ]);
-    $('#total-devices').textContent = dashboard.summary.total_devices;
-    $('#active-licenses').textContent = dashboard.summary.active_licenses;
-    $('#inactive-licenses').textContent = dashboard.summary.inactive_licenses;
-    $('#recent-devices').textContent = dashboard.summary.devices_last_24h;
+    $('#total-devices').textContent = dashboard.summary.total_devices ?? '0';
+    $('#trial-devices').textContent = dashboard.summary.trial_devices ?? '0';
+    $('#active-licenses').textContent = dashboard.summary.active_licenses ?? '0';
+    $('#inactive-licenses').textContent = dashboard.summary.inactive_licenses ?? '0';
+    $('#recent-devices').textContent = dashboard.summary.devices_last_24h ?? '0';
     state.devices = devices.devices;
     renderDevices();
   } catch (error) {
@@ -253,6 +308,15 @@ document.querySelectorAll('[data-view]').forEach((button) => {
 });
 $('#activate-cancel').addEventListener('click', () => $('#activate-dialog').close());
 
+document.querySelectorAll('.metric-card').forEach((card) => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.metric-card').forEach((c) => c.classList.remove('active'));
+    card.classList.add('active');
+    state.currentFilter = card.dataset.filter || 'all';
+    renderDevices();
+  });
+});
+
 $('#device-rows').addEventListener('click', async (event) => {
   const button = event.target.closest('[data-action]');
   if (!button) return;
@@ -264,38 +328,41 @@ $('#device-rows').addEventListener('click', async (event) => {
     $('#activate-dialog').showModal();
     return;
   }
-  if (!window.confirm(`${button.dataset.device} lisansını iptal etmek istiyor musun?`)) return;
-  try {
-    await api(`/v1/admin/licenses/${button.dataset.license}/revoke`, {
-      method: 'POST', body: JSON.stringify({ status: 'revoked', reason: 'Admin panelinden iptal edildi' }),
-    });
-    message('Lisans iptal edildi.');
-    await loadDashboard();
-  } catch (error) { message(error.message, true); }
+  if (button.dataset.action === 'revoke') {
+    if (!window.confirm(`${button.dataset.device} cihazının lisansı iptal edilsin mi?`)) return;
+    try {
+      await api(`/v1/admin/licenses/${button.dataset.license}/revoke`, {
+        method: 'POST',
+        body: JSON.stringify({ reason: 'Yönetici tarafından iptal edildi.' }),
+      });
+      message('Lisans iptal edildi.');
+      await loadDashboard();
+    } catch (error) { message(error.message, true); }
+  }
 });
 
 $('#activate-form').addEventListener('submit', async (event) => {
   event.preventDefault();
+  const deviceCode = $('#activate-device-code').value;
   try {
-    await api('/v1/admin/licenses/activate', {
+    await api('/v1/admin/licenses', {
       method: 'POST',
       body: JSON.stringify({
-        deviceCode: $('#activate-device-code').value,
-        customerEmail: $('#customer-email').value || undefined,
-        customerName: $('#customer-name').value || undefined,
-        source: 'admin_panel',
+        deviceCode,
+        customerEmail: $('#customer-email').value || null,
+        customerName: $('#customer-name').value || null,
+        kind: 'lifetime',
       }),
     });
     $('#activate-dialog').close();
-    message('Ömür boyu lisans açıldı.');
+    message(`${deviceCode} için ömür boyu lisans açıldı.`);
     await loadDashboard();
-  } catch (error) { message(error.message, true); }
+  } catch (error) {
+    message(error.message, true);
+  }
 });
 
-try {
-  const session = await api('/v1/admin/session');
-  showDashboard(session.user);
-  await loadDashboard();
-} catch {
-  showLogin();
-}
+api('/v1/admin/session').then((result) => {
+  showDashboard(result.user);
+  return loadDashboard();
+}).catch(() => showLogin());

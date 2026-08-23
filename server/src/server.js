@@ -858,6 +858,11 @@ async function dashboard(request, response) {
   const result = await db.query(
     `SELECT
        (SELECT count(*)::int FROM devices WHERE privacy_deleted_at IS NULL) AS total_devices,
+       (SELECT count(*)::int FROM devices d
+          LEFT JOIN licenses l ON l.device_id = d.id
+         WHERE d.privacy_deleted_at IS NULL
+           AND (l.status IS NULL OR l.status != 'active')
+           AND d.trial_expires_at > now()) AS trial_devices,
        (SELECT count(*)::int FROM licenses WHERE status = 'active') AS active_licenses,
        (SELECT count(*)::int FROM licenses WHERE status IN ('revoked', 'refunded', 'chargeback')) AS inactive_licenses,
        (SELECT count(*)::int FROM devices
